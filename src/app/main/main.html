@@ -1,0 +1,27 @@
+<div layout="vertical" layout-fill>
+
+  <md-content>
+    <header>
+      <acme-navbar creationDate="main.creationDate" />
+    </header>
+    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+      <md-button class="md-raised">Button</md-button>
+      <md-button class="md-raised md-primary">Primary</md-button>
+      <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+      <md-button class="md-raised md-warn">Warn</md-button>
+      <div class="label">Raised</div>
+    </section>
+
+    <section layout="row" layout-wrap>
+      <md-card ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'" flex="20" >
+        <img ng-src="https://images.unsplash.com/photo-1436564989038-18b9958df72b?q=80&fm=jpg&s=63f82ffb3fa7effd45c79e0379dbdee6" class="md-card-image" alt="{{ awesomeThing.title }}">
+        <md-card-content>
+          <h2 class="md-title">{{ awesomeThing.title }}</h2>
+          <p>{{ awesomeThing.description }}
+          </p>
+        </md-card-content>
+      </md-card>
+    </section>
+  </md-content>
+
+</div>
