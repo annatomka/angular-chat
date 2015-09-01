@@ -1,0 +1,59 @@
+<md-dialog aria-label="Registration">
+  <form name="registrationForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Registration</h2>
+        <span flex></span>
+        <md-button class="md-icon-button">
+          <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="max-width:800px;max-height:810px; ">
+      <!--<md-input-container class="md-icon-float">-->
+      <!--<label>Username</label>-->
+      <!--<md-icon md-svg-src="img/icons/ic_person_24px.svg"></md-icon>-->
+      <!--<input name="username" ng-model="user.name" type="text" required>-->
+      <!--</md-input-container>-->
+      <!--<md-input-container class="md-icon-float">-->
+      <!--<label>Password</label>-->
+      <!--<md-icon md-svg-src="img/icons/ic_lock_24px.svg"></md-icon>-->
+      <!--<input ng-model="user.password" type="password" required>-->
+      <!--</md-input-container>-->
+
+
+      <md-content layout-padding>
+        <div layout layout-sm="column">
+
+          <md-input-container flex>
+            <label>First name</label>
+            <input ng-model="user.firstname" required>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Last Name</label>
+            <input ng-model="user.lastname" required>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Username</label>
+            <input ng-model="user.username" required>
+          </md-input-container>
+        </div>
+      </md-content>
+      <md-content layout-padding layout="row" layout-sm="column">
+        <md-input-container>
+          <label>Password</label>
+          <input ng-model="user.password" type="password" required>
+        </md-input-container>
+        <md-input-container>
+          <label>Password Confirmation</label>
+          <input ng-model="passwordConfirmation" type="password" required>
+        </md-input-container>
+      </md-content>
+    </md-dialog-content>
+    <div class="md-actions" layout="column" layout-align="center">
+      <md-button class="md-primary md-raised" layout="row" layout-align="center center">
+        Register
+      </md-button>
+    </div>
+  </form>
+</md-dialog>

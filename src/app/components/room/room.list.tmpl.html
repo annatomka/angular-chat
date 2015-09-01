@@ -1,0 +1,8 @@
+<md-bottom-sheet class="md-list md-has-header">
+  <md-subheader>Available Rooms <small>Click the room you want to open</small></md-subheader>
+  <md-chips ng-model="roomListCtrl.rooms" readonly="true">
+    <md-chip-template>
+      <strong ng-click="roomListCtrl.test($chip)" >{{$chip.name}}</strong>
+    </md-chip-template>
+  </md-chips>
+</md-bottom-sheet>

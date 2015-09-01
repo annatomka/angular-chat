@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -6,34 +6,34 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr) {
-    var vm = this;
+  function MainController($scope, $timeout, $mdBottomSheet, toastr, RoomService, $log,$rootScope) {
+    var mainCtrl = this;
+    mainCtrl.openedRooms = [];
 
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.creationDate = 1440427799523;
-    vm.showToastr = showToastr;
+    var selected = null;
+    var previous = null;
 
-    activate();
+    mainCtrl.selectedIndex = 0;
 
-    function activate() {
-      getWebDevTec();
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
+    $scope.$watch('selectedIndex', function (current, old) {
+      if (typeof mainCtrl.rooms !== "undefined") {
+        previous = selected;
+        selected = mainCtrl.rooms[current];
+        if (old + 1 && (old != current)) $log.debug('Goodbye ' + previous.name + '!');
+        if (current + 1)                $log.debug('Hello ' + selected.name + '!');
+      }
+    });
 
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
+    mainCtrl.addTab = function (room) {
+      mainCtrl.openedRooms.push(room);
+    };
 
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
+    mainCtrl.removeRoom = function (index) {
+      mainCtrl.openedRooms.splice(index, 1);
+    };
 
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
-      });
-    }
+    $rootScope.$on("room.open",function(event,room){
+      mainCtrl.addTab(room);
+    });
   }
 })();

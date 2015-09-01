@@ -12,7 +12,7 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'mainCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
