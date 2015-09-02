@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastr) {
+  function config($logProvider, toastr, $mdIconProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -16,6 +16,15 @@
     toastr.options.preventDuplicates = true;
     toastr.options.progressBar = true;
 
+    // Register icon IDs with sources. Future $mdIcon( <id> ) lookups
+    // will load by url and retrieve the data via the $http and $templateCache
+    $mdIconProvider
+      .defaultIconSet("img/avatars.svg", 128)
+      .iconSet('core', 'img/icons/sets/core-icons.svg',24)
+      .icon('action:info', 'img/icons/ic_info_outline_24px.svg',24)
+      .icon('action:tab', 'img/icons/ic_tab_48px.svg',48)
+      .icon('navigation:close', 'img/icons/ic_close_24px.svg',24)
+      .icon('social:person', 'img/icons/ic_person_24px.svg',24);
   }
 
 })();

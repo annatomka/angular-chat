@@ -18,8 +18,7 @@
     function RoomListController(RoomService,$rootScope) {
       var roomListCtrl = this;
       roomListCtrl.rooms = RoomService.getRooms();
-      roomListCtrl.test = function(room){
-        console.log("tested");
+      roomListCtrl.openRoom = function(index,room){
         $rootScope.$broadcast("room.open",room);
       }
     }
@@ -32,8 +31,6 @@
           controllerAs: 'roomListCtrl',
           bindToController: true,
           targetEvent: $event
-        }).then(function(clickedItem) {
-          $scope.alert = clickedItem.name + ' clicked!';
         });
       });
     }

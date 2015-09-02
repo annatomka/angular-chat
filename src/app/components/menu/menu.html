@@ -1,42 +1,18 @@
-<!--<md-fab-speed-dial md-direction="left" ng-class="'md-scale'" layout="row" layout-align="end start">-->
-<!--<md-fab-trigger>-->
-<!--<md-button aria-label="menu" class="md-fab md-warn">-->
-<!--&lt;!&ndash;<md-icon  md-font-icon="fa fa-bars" ng-style="{'font-size': 20 + 'px'}"></md-icon>&ndash;&gt;-->
-<!--<md-icon md-svg-icon="core:add"></md-icon>-->
-<!--</md-button>-->
-<!--</md-fab-trigger>-->
-<!--<md-fab-actions>-->
-<!--<md-button aria-label="twitter" class="md-fab md-raised md-mini">-->
-<!--<md-icon md-svg-icon="core:add" style="color: grey;"></md-icon>-->
-<!--</md-button>-->
-<!--<md-button aria-label="facebook" class="md-fab md-raised md-mini">-->
-<!--<md-icon md-font-icon="fa fa-chrome" ng-style="{ 'color': 'grey', 'font-size': 20 + 'px'}"></md-icon>-->
-<!--</md-button>-->
-<!--<md-button aria-label="Google Hangout" class="md-fab md-raised md-mini">-->
-<!--<md-icon md-font-icon="fa fa-chrome" ng-style="{ 'color': 'grey', 'font-size': 20 + 'px'}"></md-icon>-->
-<!--</md-button>-->
-<!--</md-fab-actions>-->
-<!--</md-fab-speed-dial>-->
-<section layout="row" flex>
-  <left-nav></left-nav>
-</section>
-  <md-content>
-    <md-toolbar>
-      <div class="md-toolbar-tools">
-        <md-button class="md-icon-button" aria-label="Settings"  ng-click="menuCtrl.toggleLeft()" >
-          <md-icon md-svg-icon="img/icons/ic_menu_24px.svg"></md-icon>
-        </md-button>
-        <h2>
-          <span>Angular Chat Application</span>
-        </h2>
-        <span flex></span>
-        <md-button room-list-opener>
-          Rooms
-        </md-button>
-        <md-button login-button>
-          Login
-        </md-button>
-        <registration-button></registration-button>
-      </div>
-    </md-toolbar>
-  </md-content>
+<md-toolbar layout="row">
+  <div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="menuCtrl.toggleLeft()">
+      <md-icon md-svg-icon="img/icons/ic_menu_24px.svg"></md-icon>
+    </md-button>
+    <h2>
+      <span>Angular Chat Application</span>
+    </h2>
+    <span flex></span>
+    <md-button room-list-opener>
+      Rooms
+    </md-button>
+    <md-button login-button>
+      Login
+    </md-button>
+    <registration-button></registration-button>
+  </div>
+</md-toolbar>

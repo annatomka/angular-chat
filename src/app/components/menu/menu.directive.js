@@ -12,7 +12,8 @@
       templateUrl: 'app/components/menu/menu.html',
       controller: MenuController,
       controllerAs: 'menuCtrl',
-      bindToController: true
+      bindToController: true,
+      replace: true
     };
 
     return directive;
