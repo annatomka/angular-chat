@@ -1,9 +1,14 @@
 <md-list-item class="contact-item md-2-line selected">
-  <img ng-if="messageCtrl.message.type !== 'info'"  src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="md-avatar" />
-  <div ng-if="!messageCtrl.message.type"  class="md-list-item-text compact">
+  <img ng-if="messageCtrl.message.type !== 'info'" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
+       class="md-avatar"/>
+
+  <div ng-if="messageCtrl.message.type !== 'info'" class="md-list-item-text compact">
     <h3>{{messageCtrl.message.text}}</h3>
+
     <p>{{messageCtrl.message.authorId}}</p>
   </div>
-  <div ng-if="messageCtrl.message.type == 'info'">{{ messageCtrl.message.text}}</div>
+  <md-chips ng-if="messageCtrl.message.type == 'info'">
+    <md-chip>{{ messageCtrl.message.text}}</md-chip>
+  </md-chips>
 </md-list-item>
 
