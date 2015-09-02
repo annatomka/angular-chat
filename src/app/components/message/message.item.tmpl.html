@@ -1,0 +1,9 @@
+<md-list-item class="contact-item md-2-line selected">
+  <img ng-if="messageCtrl.message.type !== 'info'"  src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg" class="md-avatar" />
+  <div ng-if="!messageCtrl.message.type"  class="md-list-item-text compact">
+    <h3>{{messageCtrl.message.text}}</h3>
+    <p>{{messageCtrl.message.authorId}}</p>
+  </div>
+  <div ng-if="messageCtrl.message.type == 'info'">{{ messageCtrl.message.text}}</div>
+</md-list-item>
+

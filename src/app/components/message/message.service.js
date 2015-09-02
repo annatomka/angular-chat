@@ -6,7 +6,7 @@
     .service('MessageService',MessageService);
 
   /** @ngInject */
-  function MessageService($resource,apiUrl,Message) {
+  function MessageService($resource,apiUrl,Message,Room) {
     this.getRoomMessages = getRoomMessages;
     this.createRoomMessage = createRoomMessage;
 
@@ -15,10 +15,11 @@
     }
 
     function createRoomMessage(roomId, message){
-      var newMessage = $resource(apiUrl + '/rooms/:id/messages/:messageId',{id: roomId});;
-      //var newMessage = new Message();
+      //var newMessage = $resource(apiUrl + '/rooms/:id/messages/:messageId',{id: roomId});;
+
+      var newMessage = new Message();
       newMessage.text = message;
-      newMessage.$save();
+      newMessage.$save({id: roomId});
     }
   }
 

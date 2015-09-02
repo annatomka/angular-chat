@@ -6,15 +6,42 @@
     .controller("RoomItemController", RoomItemController);
 
   /** @ngInject */
-  function RoomItemController($scope, $timeout, $mdBottomSheet, toastr, MessageService, $log,$rootScope,$state,openedRoomsFactory) {
+  function RoomItemController($scope, $timeout, $mdBottomSheet, toastr, MessageService, $log,$rootScope,$state,openedRoomsFactory,apiUrl) {
     var roomItemCtrl = this;
-
+    var socket = null;
+    roomItemCtrl.newMessage = "";
     roomItemCtrl.messages = MessageService.getRoomMessages($state.params.id);
     console.log("mesages ",roomItemCtrl.messages);
 
-    roomItemCtrl.createMessage = function(message){
-      MessageService.createRoomMessage($state.params.id,message);
+    roomItemCtrl.createMessage = function(){
+      MessageService.createRoomMessage($state.params.id,roomItemCtrl.newMessage);
+      roomItemCtrl.newMessage = "";
     };
+
+
+    if(socket) {
+      socket.disconnect();
+    }
+
+    socket = io.connect("http://localhost:8080");
+    socket.emit("subscribe", { room: $state.params.id });
+    socket.on("update",function(message){
+      console.log("update called")
+      $scope.$apply(function() {
+        roomItemCtrl.messages.unshift({text: message, type: "info"});
+      } );
+    });
+
+    socket.on('new message', function(message) {
+
+      $scope.$apply(function(){
+        message.type = "message";
+        roomItemCtrl.messages.unshift(message);
+      });
+
+      console.log("new message arrived")
+    });
+
 
     roomItemCtrl.users = [
       {

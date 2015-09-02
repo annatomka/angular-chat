@@ -1,5 +1,7 @@
 <div layout="row" layout-wrap>
+
   <md-content class="side-nav" flex="20" style="height: 60vh;">
+
     <md-list>
       <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in roomItemCtrl.users">
         <!--<img src='https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg' class="md-avatar" alt="{{contact.name}}"/>-->
@@ -13,11 +15,13 @@
   </md-content>
 <md-content layout="column" flex="80">
   <md-content style="height: 60vh;">
-    {{ roomItemCtrl.messages }}
+    <md-list>
+      <message ng-repeat="message in roomItemCtrl.messages" message="message"></message>
+    </md-list>
   </md-content>
   <md-input-container>
     <label>New Message</label>
-    <input ng-enter="roomItemCtrl.createMessage(newMessage)" ng-model="newMessage" md-maxlength="150" />
+    <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="150" />
   </md-input-container>
 </md-content>
 
