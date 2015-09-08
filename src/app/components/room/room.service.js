@@ -6,11 +6,12 @@
     .service('RoomService', RoomService);
 
   /** @ngInject */
-  function RoomService($resource, apiUrl,Room) {
+  function RoomService($resource, apiUrl,Room, RoomUser) {
     //var Room =  $resource(apiUrl + '/rooms/:id');
     this.getRooms = getRooms;
     this.getRoom = getRoom;
     this.createRoom = createRoom;
+    this.getUsers = getUsers;
 
     function getRooms() {
 
@@ -32,6 +33,9 @@
       return newRoom.$save();
     }
 
+    function getUsers(roomId) {
+      return RoomUser.query({id: roomId});
+    }
   }
 
 })();

@@ -1,18 +1,18 @@
 <md-toolbar layout="row">
   <div class="md-toolbar-tools">
-    <md-button class="md-icon-button" aria-label="Settings" ng-click="menuCtrl.toggleLeft()">
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="menuCtrl.toggleLeft()"  ng-if="$root.loggedIn">
       <md-icon md-svg-icon="img/icons/ic_menu_24px.svg"></md-icon>
     </md-button>
     <h2>
       <span>Angular Chat Application</span>
     </h2>
     <span flex></span>
-    <md-button room-list-opener>
+    <md-button room-list-opener  ng-if="$root.loggedIn">
       Rooms
     </md-button>
-    <md-button login-button>
+    <md-button login-button ng-if="!$root.loggedIn">
       Login
     </md-button>
-    <registration-button></registration-button>
+    <registration-button  ng-if="!$root.loggedIn"></registration-button>
   </div>
 </md-toolbar>

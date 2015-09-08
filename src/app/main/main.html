@@ -1,14 +1,12 @@
-<md-content class="md-padding" ng-if="mainCtrl.openedRooms.length > 0">
-  <md-tabs md-selected="selectedIndex" md-border-bottom md-autoselect>
+<md-content flex ng-if="mainCtrl.openedRooms.length > 0">
+  <md-subheader>Opened Rooms right now</md-subheader>
+  <md-tabs md-dynamic-height md-selected="mainCtrl.selectedIndex" md-border-bottom md-autoselect>
     <md-tab ng-repeat="room in mainCtrl.openedRooms">
       <md-tab-label>{{room.name}} <a ng-click="mainCtrl.removeRoom($index,room)">
         <md-icon md-svg-icon="navigation:close"></md-icon>
       </a>
       </md-tab-label>
-      <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: center;">
-        <div ui-view></div>
-      </div>
-    </md-tab>
+      <div ui-view flex></div>
   </md-tabs>
 </md-content>
 <md-content ng-if="mainCtrl.openedRooms.length == 0" layout="column">
@@ -16,8 +14,7 @@
   <h3 layout="row" layout-align="center center">
     No rooms opened
   </h3>
-<md-icon md-svg-icon="action:info"></md-icon>
+  <md-icon md-svg-icon="action:info"></md-icon>
 
   <p layout="row" layout-align="center">Select a room to communicate with interesting people :)</p>
 </md-content>
-

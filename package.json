@@ -31,6 +31,7 @@
     "gulp-sourcemaps": "~1.5.2",
     "gulp-sass": "~2.0.1",
     "gulp-angular-filesort": "~1.1.1",
+    "http-proxy": "latest",
     "main-bower-files": "~2.8.0",
     "merge-stream": "~0.1.7",
     "jshint-stylish": "~2.0.0",

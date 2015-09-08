@@ -6,7 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $http, $templateCache) {
+  function runBlock($log, $http, $templateCache,AccountService,$rootScope,$state) {
     var urls = [
       'img/icons/sets/core-icons.svg',
       'img/icons/ic_info_outline_24px.svg',
@@ -20,6 +20,22 @@
       $http.get(url, {cache: $templateCache});
     });
 
+    $rootScope.loggedIn = AccountService.isLoggedIn();
+
+    $rootScope.$on('$stateChangeStart', function(event, next) {
+      if (next.data && next.data.authenticated) {
+        var authenticated = next.data.authenticated;
+        if (AccountService.isLoggedIn() != authenticated) {
+          event.preventDefault();
+          return;
+        }
+      }
+    });
+
+    $rootScope.$on('login.success',function(){
+      $rootScope.loggedIn = AccountService.isLoggedIn();
+      $state.go("rooms", {}, {reload: false});
+    });
     $log.debug('runBlock end');
   }
 

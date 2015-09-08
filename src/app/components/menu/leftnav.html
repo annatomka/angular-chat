@@ -5,9 +5,9 @@
   <md-content layout-padding class="cover">
 
     <div layout="column" layout-align="center">
-        <img class="avatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"/>
-        <h3 class="fullname" layout="row" layout-align="center center">Jakab Gipsz</h3>
-        <small class="username" layout="row" layout-align="center center">@gipszjakab123</small>
+        <img class="avatar" ng-src="{{ leftnavCtrl.user.imageUrl }}"/>
+        <h3 class="fullname" layout="row" layout-align="center center">{{ leftnavCtrl.user  | fullname }}</h3>
+        <small class="username" layout="row" layout-align="center center">@{{ leftnavCtrl.user.username}}</small>
     </div>
   </md-content>
   <md-content>

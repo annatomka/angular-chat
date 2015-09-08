@@ -20,6 +20,8 @@
     /** @ngInject */
     function LeftnavController($mdSidenav, $log,AccountService) {
       var leftnavCtrl = this;
+      leftnavCtrl.user = AccountService.getLoggedInUser();
+
       leftnavCtrl.close = function () {
         $mdSidenav('left').close()
           .then(function () {

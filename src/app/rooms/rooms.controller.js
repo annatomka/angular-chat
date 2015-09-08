@@ -14,12 +14,10 @@
     var selected = null;
     var previous = null;
 
-    if($state.params.id !== ""){
+    if(typeof $state.params.id !== "undefined" && $state.params.id !== ""){
       //load room by id
       var room = RoomService.getRoom($state.params.id);
-      if(typeof room !== "undefined"){
-        openedRoomsFactory.addRoom(room);
-      }
+      openedRoomsFactory.addRoom(room);
     }
     roomsCtrl.selectedIndex = 0;
 

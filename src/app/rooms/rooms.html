@@ -1,15 +1,15 @@
-<md-content flex ng-if="roomsCtrl.openedRooms.length > 0">
+<md-content flex ng-if="mainCtrl.openedRooms.length > 0">
   <md-subheader>Opened Rooms right now</md-subheader>
-  <md-tabs md-dynamic-height md-selected="roomsCtrl.selectedIndex" md-border-bottom md-autoselect>
-    <md-tab ng-repeat="room in roomsCtrl.openedRooms">
-      <md-tab-label>{{room.name}} <a ng-click="roomsCtrl.removeRoom($index,room)">
+  <md-tabs md-dynamic-height md-selected="mainCtrl.selectedIndex" md-border-bottom md-autoselect>
+    <md-tab ng-repeat="room in mainCtrl.openedRooms">
+      <md-tab-label>{{room.name}} <a ng-click="mainCtrl.removeRoom($index,room)">
         <md-icon md-svg-icon="navigation:close"></md-icon>
       </a>
       </md-tab-label>
       <div ui-view flex></div>
   </md-tabs>
 </md-content>
-<md-content ng-if="roomsCtrl.openedRooms.length == 0" layout="column">
+<md-content ng-if="mainCtrl.openedRooms.length == 0" layout="column">
 
   <h3 layout="row" layout-align="center center">
     No rooms opened

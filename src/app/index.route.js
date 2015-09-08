@@ -13,16 +13,12 @@
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'mainCtrl'
-      }).state('rooms', {
-        url: '/rooms',
-        templateUrl: 'app/rooms/rooms.html',
-        controller: 'RoomsController',
-        controllerAs: 'roomsCtrl'
-      }).state('rooms.item', {
+      }).state('home.room', {
         url: '/:id',
         templateUrl: 'app/rooms/room.item.html',
         controller: 'RoomItemController',
-        controllerAs: 'roomItemCtrl'
+        controllerAs: 'roomItemCtrl',
+        data: {authenticated: true}
       });
 
     $urlRouterProvider.otherwise('/');

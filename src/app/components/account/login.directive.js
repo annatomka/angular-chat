@@ -6,7 +6,7 @@
     .directive('loginButton', loginButton);
 
   /** @ngInject */
-  function loginButton() {
+  function loginButton($mdDialog, authFactory, AccountService,$state) {
     var directive = {
       restrict: 'A',
       controller: LoginController,
@@ -24,7 +24,7 @@
     }
 
     /** @ngInject */
-    function LoginController($mdDialog) {
+    function LoginController() {
       var loginCtrl = this;
 
       loginCtrl.showLoginDialog = function (ev) {
@@ -35,15 +35,10 @@
           targetEvent: ev,
           controllerAs: "loginDialogCtrl",
           clickOutsideToClose: true
-        })
-          .then(function (answer) {
-            vm.status = 'You said the information was "' + answer + '".';
-          }, function () {
-            vm.status = 'You cancelled the dialog.';
-          });
+        });
       };
 
-      function DialogController($mdDialog, authFactory, RoomService) {
+      function DialogController($mdDialog, authFactory, AccountService,$window) {
         var loginDialogCtrl = this;
         loginDialogCtrl.user = {};
 
@@ -55,7 +50,9 @@
         };
 
         loginDialogCtrl.login = function () {
-          authFactory.login(loginDialogCtrl.user.username, loginDialogCtrl.user.password)
+          AccountService.login(loginDialogCtrl.user.username, loginDialogCtrl.user.password);
+
+          $mdDialog.hide();
         };
       }
     }

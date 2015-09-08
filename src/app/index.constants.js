@@ -4,7 +4,8 @@
 
   angular
     .module('angularChat')
-    .constant('apiUrl', "http://localhost:8080/api/v1")
+    .constant('apiUrl', "/api/v1")
+    .constant('socketUrl', window.location.hostname + ":8080")
     .constant('malarkey', malarkey)
     .constant('toastr', toastr)
     .constant('moment', moment);

@@ -6,7 +6,7 @@
     .directive('logoutButton', logoutButton);
 
   /** @ngInject */
-  function logoutButton() {
+  function logoutButton(AccountService,$state) {
     var directive = {
       restrict: 'A',
       controller: LogoutController,
@@ -18,14 +18,14 @@
     return directive;
 
     /** @ngInject */
-    function LogoutController(authFactory) {
+    function LogoutController() {
       var logoutCtrl = this;
-
     }
 
     function link(scope, element, attrs) {
       element.on( "click", function() {
-        authFactory.logout();
+        AccountService.logout();
+        $state.reload(true);
       });
     }
   }
