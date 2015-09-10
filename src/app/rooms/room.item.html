@@ -1,28 +1,29 @@
 <div layout="row" layout-wrap>
 
-  <md-content class="side-nav" flex="20" style="height: 60vh;">
-
-    <md-list>
+  <md-content class="side-nav room-users" layout="column" flex="18">
+    <md-list layout-fill>
+      <md-subheader class="md-primary">Available users</md-subheader>
       <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in roomItemCtrl.users">
-        <!--<img src='https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg' class="md-avatar" alt="{{contact.name}}"/>-->
-        <md-icon md-svg-icon="{{contact.avatar}}" class="md-avatar"></md-icon>
+        <img ng-src='{{ contact.imageUrl }}' class="md-avatar" alt="{{contact.name}}"/>
         <div class="md-list-item-text compact">
           <h3>{{contact | fullname }}</h3>
           <p>@{{contact.username}}</p>
         </div>
+        <md-divider></md-divider>
       </md-list-item>
     </md-list>
   </md-content>
 <md-content layout="column" flex="80">
   <md-content style="height: 60vh;">
     {{roomItemCtrl.users2}}
-    <md-list>
-      <message ng-repeat="message in roomItemCtrl.messages" message="message"></message>
+    <md-list scroll="roomItemCtrl.messages">
+      <md-subheader class="md-primary">Messages in room {{ roomItemCtrl.room.name }}</md-subheader>
+      <message ng-repeat="message in roomItemCtrl.messages" message="message"  author="roomItemCtrl.allusers[message.authorId]" ng-class="{ 'repeated-author' : $index>0 && message.authorId == roomItemCtrl.messages[$index-1].authorId}"></message>
     </md-list>
   </md-content>
   <md-input-container>
     <label>New Message</label>
-    <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="150" />
+    <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="350" />
   </md-input-container>
 </md-content>
 

@@ -1,0 +1,30 @@
+<md-content layout-padding>
+  <div layout layout-sm="column">
+
+  <md-input-container flex>
+    <label>First name</label>
+    <input ng-model="profileDialogCtrl.user.firstName" required>
+  </md-input-container>
+  <md-input-container flex>
+    <label>Last Name</label>
+    <input ng-model="profileDialogCtrl.user.lastName" required>
+  </md-input-container>
+  <md-input-container flex>
+    <label>Username</label>
+    <input ng-model="profileDialogCtrl.user.username" required>
+  </md-input-container>
+</div>
+</md-content>
+<md-content layout-padding layout="column">
+  <md-input-container>
+    <label>Image url</label>
+    <input ng-model="profileDialogCtrl.user.imageUrl" required>
+  </md-input-container>
+</md-content>
+<md-content layout-padding layout="row" layout-sm="column">
+
+  <md-input-container>
+    <label>Password</label>
+    <input ng-model="profileDialogCtrl.user.password" type="password" required>
+  </md-input-container>
+</md-content>

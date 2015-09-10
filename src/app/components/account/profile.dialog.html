@@ -1,20 +1,20 @@
-<md-dialog aria-label="Registration">
-  <form name="registrationForm">
+<md-dialog aria-label="Login">
+  <form name="loginForm">
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <h2>Registration</h2>
+        <h2>My profile</h2>
         <span flex></span>
         <md-button class="md-icon-button">
           <md-icon md-svg-src="img/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
         </md-button>
       </div>
     </md-toolbar>
-    <md-dialog-content style="max-width:800px;max-height:810px; ">
+    <md-dialog-content>
       <ng-include src="'app/components/account/basic.info.tmpl.html'"></ng-include>
     </md-dialog-content>
     <div class="md-actions" layout="column" layout-align="center">
-      <md-button class="md-primary md-raised" layout="row" layout-align="center center">
-        Register
+      <md-button layout="row" layout-align="center center" ng-click="profileDialogCtrl.save()">
+        Save
       </md-button>
     </div>
   </form>

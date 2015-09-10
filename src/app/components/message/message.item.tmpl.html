@@ -1,14 +1,8 @@
 <md-list-item class="contact-item md-2-line selected">
-  <img ng-if="messageCtrl.message.type !== 'info'" src="https://s3.amazonaws.com/uifaces/faces/twitter/jsa/128.jpg"
-       class="md-avatar"/>
-
-  <div ng-if="messageCtrl.message.type !== 'info'" class="md-list-item-text compact">
-    <h3>{{messageCtrl.message.text}}</h3>
-
-    <p>{{messageCtrl.message.authorId}}</p>
+  <img ng-src="{{ messageCtrl.author.imageUrl }}" class="md-avatar message-avatar"/>
+  <div class="md-list-item-text compact">
+    <p style="text-align: right;"><small><strong>@{{messageCtrl.author.username}}</strong>, {{ messageCtrl.message | createdDate }}</small></p>
+    <div class="message-content">{{messageCtrl.message.text}}</div>
   </div>
-  <md-chips ng-if="messageCtrl.message.type == 'info'">
-    <md-chip>{{ messageCtrl.message.text}}</md-chip>
-  </md-chips>
 </md-list-item>
 

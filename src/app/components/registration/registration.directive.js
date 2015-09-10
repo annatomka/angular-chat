@@ -27,25 +27,21 @@
           templateUrl: 'app/components/registration/registration.dialog.html',
           parent: angular.element(document.body),
           targetEvent: ev,
+          controllerAs: "registrationDialogCtrl",
           clickOutsideToClose: true
-        })
-          .then(function (answer) {
-            vm.status = 'You said the information was "' + answer + '".';
-          }, function () {
-            vm.status = 'You cancelled the dialog.';
-          });
+        });
       };
 
-      function DialogController2($scope, $mdDialog) {
-        $scope.hide = function() {
+      function DialogController2($mdDialog) {
+        var registrationDialogCtrl = this;
+
+        registrationDialogCtrl.hide = function() {
           $mdDialog.hide();
         };
-        $scope.cancel = function() {
+        registrationDialogCtrl.cancel = function() {
           $mdDialog.cancel();
         };
-        $scope.answer = function(answer) {
-          $mdDialog.hide(answer);
-        };
+
       }
     }
   }

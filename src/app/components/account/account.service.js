@@ -23,18 +23,19 @@
       return typeof $localStorage.user !== "undefined";
     }
 
-    function setLoggedInUser(){
-      Account.get().$promise.then(function(user){
-        $localStorage.user = user;
-        $rootScope.$broadcast("login.success");
-      },function(error){
-        alert("error "+error)
-      });
+    function setLoggedInUser(user){
+      $localStorage.user = user;
     }
 
     function login(username,password){
       authFactory.login(username, password);
-      setLoggedInUser();
+      Account.get().$promise.then(function(user){
+        setLoggedInUser(user);
+        $rootScope.$broadcast("login.success");
+      },function(error){
+        alert("error "+error)
+      });
+
     }
 
     function logout(){
@@ -42,6 +43,7 @@
       authFactory.logout();
       $window.location.reload();
     }
+
   }
 
 })();

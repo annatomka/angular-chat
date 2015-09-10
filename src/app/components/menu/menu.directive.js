@@ -19,11 +19,12 @@
     return directive;
 
     /** @ngInject */
-    function MenuController($timeout, $mdSidenav, $mdUtil, $log) {
+    function MenuController($timeout, $mdSidenav, $mdUtil, $log,AccountService) {
       var menuCtrl = this;
 
       menuCtrl.toggleLeft = buildToggler('left');
 
+      menuCtrl.user = AccountService.getLoggedInUser();
       /**
        * Build handler to open/close a SideNav; when animation finishes
        * report completion in console

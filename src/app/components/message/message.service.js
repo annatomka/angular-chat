@@ -6,7 +6,7 @@
     .service('MessageService',MessageService);
 
   /** @ngInject */
-  function MessageService($resource,apiUrl,Message,Room) {
+  function MessageService($resource,apiUrl,Message,Room,AccountService) {
     this.getRoomMessages = getRoomMessages;
     this.createRoomMessage = createRoomMessage;
 
@@ -19,6 +19,7 @@
 
       var newMessage = new Message();
       newMessage.text = message;
+      newMessage.user = AccountService.getLoggedInUser();
       newMessage.$save({id: roomId});
     }
   }
