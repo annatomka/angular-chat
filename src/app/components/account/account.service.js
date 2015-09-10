@@ -42,12 +42,12 @@
 
     function logout(){
       delete $localStorage.user;
+      delete $localStorage.rooms;
       $rootScope.loggedIn = false;
       authFactory.logout();
-      $state.go("login", {}, {reload: true});
+      $state.go("home", {}, {reload: true});
 
     }
-
   }
 
 })();

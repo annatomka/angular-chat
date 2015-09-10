@@ -14,7 +14,8 @@
       updateRooms();
     }
     var roomFactoryObj = {
-      rooms: $localStorage.rooms
+      rooms: $localStorage.rooms,
+      selectedIndex: 0
     };
 
     roomFactoryObj.addRoom = function(room){

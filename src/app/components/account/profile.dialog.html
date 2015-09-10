@@ -10,7 +10,7 @@
       </div>
     </md-toolbar>
     <md-dialog-content>
-      <ng-include src="'app/components/account/basic.info.tmpl.html'"></ng-include>
+      <basic-info user="profileDialogCtrl.user"></basic-info>
     </md-dialog-content>
     <div class="md-actions" layout="column" layout-align="center">
       <md-button layout="row" layout-align="center center" ng-click="profileDialogCtrl.save()">

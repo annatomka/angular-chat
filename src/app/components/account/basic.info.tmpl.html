@@ -3,28 +3,28 @@
 
   <md-input-container flex>
     <label>First name</label>
-    <input ng-model="profileDialogCtrl.user.firstName" required>
+    <input ng-model="user.firstName" required name="firstName">
   </md-input-container>
   <md-input-container flex>
     <label>Last Name</label>
-    <input ng-model="profileDialogCtrl.user.lastName" required>
+    <input ng-model="user.lastName" required name="lastName">
   </md-input-container>
   <md-input-container flex>
     <label>Username</label>
-    <input ng-model="profileDialogCtrl.user.username" required>
+    <input ng-model="user.username" required name="username">
   </md-input-container>
 </div>
 </md-content>
 <md-content layout-padding layout="column">
   <md-input-container>
     <label>Image url</label>
-    <input ng-model="profileDialogCtrl.user.imageUrl" required>
+    <input ng-model="user.imageUrl" name="imageUrl">
   </md-input-container>
 </md-content>
 <md-content layout-padding layout="row" layout-sm="column">
 
   <md-input-container>
     <label>Password</label>
-    <input ng-model="profileDialogCtrl.user.password" type="password" required>
+    <input ng-model="user.password" type="password" required name="password">
   </md-input-container>
 </md-content>

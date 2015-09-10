@@ -102,7 +102,6 @@ message md-list-item.contact-item{
 
 .room-users{
   max-height: 60vh;
-  //background-color: #E7E7E7;
   md-list{
     padding: 0px;
 
@@ -110,16 +109,15 @@ message md-list-item.contact-item{
       background-color: white;
     }
   }
-
 }
 
-.login-frame img {
+.login-frame img, .registration-frame img {
   max-height: 100px;
   width: auto;
   margin: auto;
 }
 
-.login-frame md-card {
+.login-frame md-card, .registration-frame md-card {
   max-width: 400px;
   margin: auto;
 }

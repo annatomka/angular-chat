@@ -47,22 +47,13 @@
         createRoomCtrl.create = function(){
           RoomService.createRoom(createRoomCtrl.newRoom).then(function(result){
             console.info(result)
-            toast("Room "+result._id+" created successfully!")
+            $rootScope.toast("Room "+result._id+" created successfully!")
             $state.go("rooms.item",{id: result._id},true)
             $mdDialog.hide();
           },function(result){
             console.error(result)
-            toast("We couldn't create your room, sorry :(")
+            $rootScope.toast("We couldn't create your room, sorry :(")
           });
-
-          function toast(msg){
-            $mdToast.show(
-              $mdToast.simple()
-                .content(msg)
-                .position("top right")
-                .hideDelay(3000)
-            );
-          }
 
         }
       }

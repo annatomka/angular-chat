@@ -11,18 +11,16 @@
 
     mainCtrl.openedRooms = openedRoomsFactory.rooms;
 
-
     var selected = null;
     var previous = null;
 
     if(typeof $state.params.id !== "undefined" && $state.params.id !== ""){
-      //load room by id
-      var room = RoomService.getRoom($state.params.id);
-      openedRoomsFactory.addRoom(room);
+      ////load room by id
+      //var room = RoomService.getRoom($state.params.id);
+      //openedRoomsFactory.addRoom(room);
     }
-    mainCtrl.selectedIndex = 0;
 
-    $scope.$watch('mainCtrl.selectedIndex', function (current, old) {
+    $scope.$watch('openedRoomsFactory.selectedIndex', function (current, old) {
       var room = openedRoomsFactory.getRoomByIndex(current);
       if(typeof room !== "undefined" && $state.params.id !== room._id){
         $state.go("rooms.room",{id: room._id});

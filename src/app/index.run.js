@@ -6,7 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $http, $templateCache,AccountService,$rootScope,$state) {
+  function runBlock($log, $http, $templateCache,AccountService,$rootScope,$state,$mdToast) {
     var urls = [
       'img/icons/sets/core-icons.svg',
       'img/icons/ic_info_outline_24px.svg',
@@ -33,6 +33,15 @@
       }
     });
     $log.debug('runBlock end');
+
+    $rootScope.toast = function(msg){
+      $mdToast.show(
+        $mdToast.simple()
+          .content(msg)
+          .position("top right")
+          .hideDelay(3000)
+      );
+    }
   }
 
 })();

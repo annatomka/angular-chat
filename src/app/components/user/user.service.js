@@ -10,10 +10,16 @@
     //var User =  $resource(apiUrl + '/users/:id');
 
     this.update = update;
+    this.create = create;
     this.getAll = getAll;
 
     function update(user){
       var result = User.update({ id:user._id }, user);
+      return result;
+    }
+
+    function create(user){
+      var result = user.$save();
       return result;
     }
 

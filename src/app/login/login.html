@@ -20,11 +20,11 @@
               <input ng-model="loginDialogCtrl.user.password" type="password" required>
             </md-input-container>
             <div class="md-actions" layout="column" layout-align="center">
-              <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-click="loginCtrl.login()">
+              <md-button ui-sref="registration" class="md-raised md-primary" layout="row" layout-align="center center" ng-click="loginCtrl.login()">
                 Login
               </md-button>
               <a
-                class="md-primary md-button md-cyan-theme"
+                class="md-primary md-button md-cyan-theme" ui-sref="registration"
                 aria-label="Don't have an account? Create one now">Don't have an account? Create one now</a>
             </div>
 
