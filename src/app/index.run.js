@@ -11,8 +11,8 @@
       'img/icons/sets/core-icons.svg',
       'img/icons/ic_info_outline_24px.svg',
       'img/icons/ic_close_24px.svg',
-      'img/icons/img/icons/ic_tab_48px.svg',
-      'img/icons/ic_person_24px.svg'
+      'img/icons/ic_person_24px.svg',
+      'img/logo.png'
     ];
     // Pre-fetch icons sources by URL and cache in the $templateCache...
     // subsequent $http calls will look there first.
@@ -27,14 +27,10 @@
         var authenticated = next.data.authenticated;
         if (AccountService.isLoggedIn() != authenticated) {
           event.preventDefault();
+          $state.go("login");
           return;
         }
       }
-    });
-
-    $rootScope.$on('login.success',function(){
-      $rootScope.loggedIn = AccountService.isLoggedIn();
-      $state.go("rooms", {}, {reload: false});
     });
     $log.debug('runBlock end');
   }

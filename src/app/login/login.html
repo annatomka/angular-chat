@@ -1,0 +1,36 @@
+<div class="login-frame" ui-view="" flex="" layout="row">
+  <div layout="row" flex="" layout-padding="" layout-fill="" layout-align="center center" class="ng-scope">
+    <div flex="40" flex-lg="50" flex-md="70" flex-sm="100">
+      <md-card class="md-cyan-theme">
+        <md-toolbar class="md-cyan-theme" layout-padding>
+          <div layout="column" layout-align="center" class="padding-20 text-center">
+            <img ng-src="img/logo.png">
+            <h1 layout="row" layout-align="center center" class="md-headline ng-scope" translate="">Login</h1>
+          </div>
+        </md-toolbar>
+
+        <md-content class="md-padding md-cyan-theme">
+          <form name="login">
+            <md-input-container>
+              <label>Username</label>
+              <input name="username" ng-model="loginDialogCtrl.user.username" type="text" required>
+            </md-input-container>
+            <md-input-container>
+              <label>Password</label>
+              <input ng-model="loginDialogCtrl.user.password" type="password" required>
+            </md-input-container>
+            <div class="md-actions" layout="column" layout-align="center">
+              <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-click="loginCtrl.login()">
+                Login
+              </md-button>
+              <a
+                class="md-primary md-button md-cyan-theme"
+                aria-label="Don't have an account? Create one now">Don't have an account? Create one now</a>
+            </div>
+
+          </form>
+        </md-content>
+      </md-card>
+    </div>
+  </div>
+</div>

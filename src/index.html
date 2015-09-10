@@ -23,9 +23,8 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <main-menu></main-menu>
-    <left-nav ng-if="$root.loggedIn"></left-nav>
-    <div ui-view flex></div>
+
+    <div class="full-height" ui-view  layout="column" layout-fill></div>
     <room-list ng-if="$root.loggedIn"></room-list>
     <fab ng-if="$root.loggedIn"></fab>
     <!-- build:js(src) scripts/vendor.js -->

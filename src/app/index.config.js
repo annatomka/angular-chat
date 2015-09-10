@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastr, $mdIconProvider) {
+  function config($logProvider, toastr, $mdIconProvider,$mdThemingProvider) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -22,9 +22,12 @@
       .defaultIconSet("img/avatars.svg", 128)
       .iconSet('core', 'img/icons/sets/core-icons.svg',24)
       .icon('action:info', 'img/icons/ic_info_outline_24px.svg',24)
-      .icon('action:tab', 'img/icons/ic_tab_48px.svg',48)
       .icon('navigation:close', 'img/icons/ic_close_24px.svg',24)
       .icon('social:person', 'img/icons/ic_person_24px.svg',24);
+
+    $mdThemingProvider.theme('default')
+      .primaryPalette('indigo')
+      .accentPalette('blue-grey');
   }
 
 })();

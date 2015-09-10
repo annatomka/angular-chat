@@ -10,10 +10,20 @@
     $stateProvider
       .state('home', {
         url: '/',
+        templateUrl: 'app/main/home.html',
+        data: {authenticated: true}
+      })
+      .state('rooms', {
+        url: '/rooms',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'mainCtrl'
-      }).state('home.room', {
+      }).state('login', {
+        url: '/login',
+        templateUrl: 'app/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'loginCtrl'
+      }).state('rooms.room', {
         url: '/:id',
         templateUrl: 'app/rooms/room.item.html',
         controller: 'RoomItemController',

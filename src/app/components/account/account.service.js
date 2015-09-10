@@ -6,7 +6,7 @@
     .service('AccountService', AccountService);
 
   /** @ngInject */
-  function AccountService($resource,apiUrl,$localStorage,authFactory,$window,$rootScope) {
+  function AccountService($resource,apiUrl,$localStorage,authFactory,$window,$rootScope,$state) {
     var Account =  $resource(apiUrl + '/account/me');
 
     this.setLoggedInUser = setLoggedInUser;
@@ -25,13 +25,15 @@
 
     function setLoggedInUser(user){
       $localStorage.user = user;
+      $rootScope.loggedIn = true;
     }
 
     function login(username,password){
       authFactory.login(username, password);
       Account.get().$promise.then(function(user){
         setLoggedInUser(user);
-        $rootScope.$broadcast("login.success");
+
+        $state.go("rooms", {}, {reload: false});
       },function(error){
         alert("error "+error)
       });
@@ -40,8 +42,10 @@
 
     function logout(){
       delete $localStorage.user;
+      $rootScope.loggedIn = false;
       authFactory.logout();
-      $window.location.reload();
+      $state.go("login", {}, {reload: true});
+
     }
 
   }

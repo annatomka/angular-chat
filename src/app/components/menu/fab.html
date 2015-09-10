@@ -1,15 +1,8 @@
 <md-fab-speed-dial md-direction="left" ng-class="'md-scale'" style="position: fixed;right:10px;bottom: 10px;">
   <md-fab-trigger>
-    <md-button aria-label="menu" class="md-fab md-warn">
+    <md-button aria-label="menu" class="md-fab md-warn" ng-click="fabCtrl.createRoomDialog()">
       <md-icon md-svg-icon="core:add"></md-icon>
+      <md-tooltip md-direction="left">Create Room</md-tooltip>
     </md-button>
   </md-fab-trigger>
-  <md-fab-actions>
-    <md-button aria-label="new room" class="md-fab md-raised md-mini" ng-click="fabCtrl.createRoomDialog()">
-      <md-icon md-svg-icon="action:tab" style="color: grey;"></md-icon>
-    </md-button>
-    <md-button aria-label="add person to room" class="md-fab md-raised md-mini">
-      <md-icon md-svg-icon="social:person" style="color: grey;"></md-icon>
-    </md-button>
-  </md-fab-actions>
 </md-fab-speed-dial>

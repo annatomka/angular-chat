@@ -1,3 +1,5 @@
+<main-menu ng-if="$root.loggedIn"></main-menu>
+<left-nav ng-if="$root.loggedIn"></left-nav>
 <md-content flex ng-if="mainCtrl.openedRooms.length > 0">
   <md-subheader>Opened Rooms right now</md-subheader>
   <md-tabs md-dynamic-height md-selected="mainCtrl.selectedIndex" md-border-bottom md-autoselect>
@@ -8,13 +10,4 @@
       </md-tab-label>
       <div ui-view flex></div>
   </md-tabs>
-</md-content>
-<md-content ng-if="mainCtrl.openedRooms.length == 0" layout="column">
-
-  <h3 layout="row" layout-align="center center">
-    No rooms opened
-  </h3>
-  <md-icon md-svg-icon="action:info"></md-icon>
-
-  <p layout="row" layout-align="center">Select a room to communicate with interesting people :)</p>
 </md-content>

@@ -13,7 +13,7 @@
 // endinjector
 
 body{
-  background-image: url('../img/background.jpg');
+  background-image: url('https://newevolutiondesigns.com/images/freebies/google-material-design-wallpaper-14.jpg');
   background-size: cover;
 }
 
@@ -103,7 +103,6 @@ message md-list-item.contact-item{
 .room-users{
   max-height: 60vh;
   //background-color: #E7E7E7;
-  border-right: 1px solid #F3F3F3;
   md-list{
     padding: 0px;
 
@@ -112,4 +111,20 @@ message md-list-item.contact-item{
     }
   }
 
+}
+
+.login-frame img {
+  max-height: 100px;
+  width: auto;
+  margin: auto;
+}
+
+.login-frame md-card {
+  max-width: 400px;
+  margin: auto;
+}
+
+.full-height {
+  height: 100%;
+  box-sizing: border-box;
 }
