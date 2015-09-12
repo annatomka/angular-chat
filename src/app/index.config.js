@@ -27,7 +27,7 @@
 
     $mdThemingProvider.theme('default')
       .primaryPalette('indigo')
-      .accentPalette('blue-grey');
+      .accentPalette('blue');
   }
 
 })();

@@ -33,7 +33,7 @@
         });
       };
 
-      function DialogController2($mdDialog,RoomService,$mdToast,$state) {
+      function DialogController2($rootScope,$mdDialog,RoomService,$mdToast,$state) {
         var createRoomCtrl = this;
         createRoomCtrl.newRoom = {};
 

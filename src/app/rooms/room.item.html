@@ -3,12 +3,12 @@
     <md-content style="height: 60vh;">
       {{roomItemCtrl.users2}}
       <md-list scroll="roomItemCtrl.messages">
-        <md-subheader class="md-primary">Messages in room {{ roomItemCtrl.room.name }}</md-subheader>
+        <md-subheader class="md-info">Messages in room {{ roomItemCtrl.room.name }}</md-subheader>
         <message ng-repeat="message in roomItemCtrl.messages" message="message"  author="roomItemCtrl.allusers[message.authorId]" ng-class="{ 'repeated-author' : $index>0 && message.authorId == roomItemCtrl.messages[$index-1].authorId}"></message>
       </md-list>
     </md-content>
-    <md-content layout-padding >
-      <md-input-container>
+    <md-content layout-padding>
+      <md-input-container class="md-accent">
         <label>New Message</label>
         <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="350" />
       </md-input-container>
@@ -16,7 +16,7 @@
   </md-content>
   <md-content class="side-nav room-users" hide-sm layout="column" flex="18">
     <md-list layout-fill>
-      <md-subheader class="md-primary">Available users</md-subheader>
+      <md-subheader class="md-accent">Available users</md-subheader>
       <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in roomItemCtrl.users">
         <img ng-src='{{ contact.imageUrl }}' class="md-avatar" alt="{{contact.name}}"/>
         <div class="md-list-item-text compact">
