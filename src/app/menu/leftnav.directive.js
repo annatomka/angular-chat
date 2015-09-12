@@ -9,7 +9,7 @@
   function leftNav() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/menu/leftnav.html',
+      templateUrl: 'app/menu/leftnav.html',
       controller: LeftnavController,
       controllerAs: 'leftnavCtrl',
       bindToController: true

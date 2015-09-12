@@ -26,7 +26,7 @@
     function link(scope, element, attrs) {
       element.on( "click", function($event) {
         $mdBottomSheet.show({
-          templateUrl: 'app/components/room/room.list.tmpl.html',
+          templateUrl: 'app/room/room.list.tmpl.html',
           controller: RoomListController,
           controllerAs: 'roomListCtrl',
           bindToController: true,

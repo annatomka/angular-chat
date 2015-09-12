@@ -9,7 +9,7 @@
   function fab() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/menu/fab.html',
+      templateUrl: 'app/menu/fab.html',
       controller: FabController,
       controllerAs: 'fabCtrl',
       bindToController: true
@@ -24,7 +24,7 @@
       fabCtrl.createRoomDialog = function (ev) {
         $mdDialog.show({
           controller: DialogController2,
-          templateUrl: 'app/components/room/room.create.dialog.tmpl.html',
+          templateUrl: 'app/room/room.create.dialog.tmpl.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: true,

@@ -1,6 +1,5 @@
 (function() {
   'use strict';
-
   angular
     .module('angularChat')
     .filter('fullname', fullname);
@@ -11,5 +10,4 @@
       return user.firstName + " " + user.lastName;
     };
   }
-
 })();

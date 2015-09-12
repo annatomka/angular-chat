@@ -12,7 +12,7 @@
       scope: {
         user: "="
       },
-      templateUrl: 'app/components/account/basic.info.tmpl.html'
+      templateUrl: 'app/account/basic.info.tmpl.html'
     };
     return directive;
   }

@@ -9,7 +9,7 @@
   function menu() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/menu/menu.html',
+      templateUrl: 'app/menu/menu.html',
       controller: MenuController,
       controllerAs: 'menuCtrl',
       bindToController: true,

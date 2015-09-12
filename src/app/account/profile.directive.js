@@ -30,7 +30,7 @@
       profileCtrl.showLoginDialog = function (ev) {
         $mdDialog.show({
           controller: DialogController,
-          templateUrl: 'app/components/account/profile.dialog.html',
+          templateUrl: 'app/account/profile.dialog.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           controllerAs: "profileDialogCtrl",

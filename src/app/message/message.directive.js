@@ -9,7 +9,7 @@
   function message() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/components/message/message.item.tmpl.html',
+      templateUrl: 'app/message/message.item.tmpl.html',
       controller: MessageController,
       controllerAs: 'messageCtrl',
       bindToController: true,

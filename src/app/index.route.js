@@ -8,11 +8,6 @@
   /** @ngInject */
   function routeConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      //.state('home', {
-      //  url: '/',
-      //  templateUrl: 'app/main/home.html',
-      //  data: {authenticated: true}
-      //})
       .state('rooms', {
         url: '/rooms',
         templateUrl: 'app/main/main.html',
