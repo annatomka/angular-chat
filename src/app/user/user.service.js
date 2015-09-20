@@ -7,8 +7,6 @@
 
   /** @ngInject */
   function UserService($resource,apiUrl,$localStorage,authFactory,$window,$rootScope, User) {
-    //var User =  $resource(apiUrl + '/users/:id');
-
     this.update = update;
     this.create = create;
     this.getAll = getAll;
