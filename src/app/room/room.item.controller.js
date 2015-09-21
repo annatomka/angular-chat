@@ -6,19 +6,12 @@
     .controller("RoomItemController", RoomItemController);
 
   /** @ngInject */
-  function RoomItemController($scope, $timeout, $mdBottomSheet, toastr, MessageService, RoomService, $log, $rootScope, $state, openedRoomsFactory, apiUrl, socketFactory, AccountService, Message, allUsersFactory) {
+  function RoomItemController($scope, $timeout, $mdBottomSheet, toastr, RoomService, $log, $rootScope, $state, openedRoomsFactory, apiUrl, socketFactory, AccountService, allUsersFactory) {
     var roomItemCtrl = this;
-    roomItemCtrl.newMessage = "";
     var roomId = $state.params.id;
 
-    roomItemCtrl.messages = MessageService.getRoomMessages(roomId);
     roomItemCtrl.users = [];
     roomItemCtrl.allusers = allUsersFactory.users;
-
-    roomItemCtrl.createMessage = function () {
-      MessageService.createRoomMessage(roomId, roomItemCtrl.newMessage);
-      roomItemCtrl.newMessage = "";
-    };
 
     RoomService.getRoom(roomId).$promise.then(function (room) {
       _.forEach(room.users, function (userId) {
@@ -42,10 +35,6 @@
         _.remove(roomItemCtrl.users, {
           _id: user._id
         });
-    });
-
-    socketFactory.on("new message",function (message) {
-      roomItemCtrl.messages.push(message);
     });
 
     $scope.$on("$destroy", function () {
