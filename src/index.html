@@ -23,11 +23,11 @@
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-
-    <div ng-include="'app/main/main.html'"></div>
+    <ng-include src="'app/main/main.html'"></ng-include>
+    <!--<div ng-include="'app/main/main.html'"></div>-->
     <div class="full-height" ui-view  layout="column" layout-fill></div>
-
-    <script src="https://angular-chat-example-backend.herokuapp.com/socket.io.js" type="text/javascript"></script>
+    <room-list ng-if="$root.loggedIn"></room-list>
+    <script src="http://localhost:8080/socket.io.js" type="text/javascript"></script>
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
     <!-- run `gulp inject` to automatically populate bower script dependencies -->

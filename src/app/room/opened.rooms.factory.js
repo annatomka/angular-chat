@@ -6,7 +6,7 @@
     .factory('openedRoomsFactory', openedRoomsFactory);
 
   /** @ngInject */
-  function openedRoomsFactory(RoomService,$localStorage) {
+  function openedRoomsFactory(RoomService,$localStorage,$rootScope) {
     var self = this;
 
     var roomFactoryObj = {};
@@ -36,6 +36,7 @@
       room.index = $localStorage.rooms.length;
       $localStorage.index = room.index;
       $localStorage.rooms.push(room);
+      $rootScope.$emit("room.added");
     };
 
     roomFactoryObj.removeRoom = function(index){

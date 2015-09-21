@@ -21,7 +21,7 @@
       roomListCtrl.openRoom = function(index,room){
         if(!openedRoomsFactory.containsRoom(room)){
           openedRoomsFactory.addRoom(room);
-          $state.go("rooms.room",{id: room._id},{reload: true});
+          $state.go("rooms.room",{id: room._id},{reload: false});
         }else{
           $rootScope.toast("You've already opened this room!");
         }

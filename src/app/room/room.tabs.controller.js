@@ -9,8 +9,7 @@
   function RoomsController($scope, $timeout, $mdBottomSheet, toastr, RoomService, $log,$rootScope,$state,openedRoomsFactory) {
     var roomsCtrl = this;
 
-    roomsCtrl.selectedIndex = openedRoomsFactory.getSelectedIndex();
-    roomsCtrl.rooms = openedRoomsFactory.getRooms();
+    syncFromOpenedRoomsFactory();
 
     roomsCtrl.removeRoom = function (index) {
       openedRoomsFactory.removeRoom(index);
@@ -23,5 +22,11 @@
       }
     });
 
+    $rootScope.$on("room.added",syncFromOpenedRoomsFactory);
+
+    function syncFromOpenedRoomsFactory(){
+      roomsCtrl.selectedIndex = openedRoomsFactory.getSelectedIndex();
+      roomsCtrl.rooms = openedRoomsFactory.getRooms();
+    }
   }
 })();
