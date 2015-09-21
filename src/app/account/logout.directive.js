@@ -25,7 +25,7 @@
     function link(scope, element, attrs) {
       element.on( "click", function() {
         AccountService.logout();
-        $state.reload(true);
+        $state.go("login", {}, {reload: true});
       });
     }
   }

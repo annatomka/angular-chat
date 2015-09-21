@@ -23,17 +23,8 @@
       leftnavCtrl.user = AccountService.getLoggedInUser();
 
       leftnavCtrl.close = function () {
-        $mdSidenav('left').close()
-          .then(function () {
-            $log.debug("close LEFT is done");
-          });
+        $mdSidenav('left').close();
       };
-
-      $mdSidenav("left")
-        .then(function(data){
-          $log.debug('toggled');
-        });
-
     }
   }
 

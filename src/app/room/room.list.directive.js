@@ -11,15 +11,15 @@
       restrict: 'A',
       link: link
     };
-
     return directive;
 
     /** @ngInject */
-    function RoomListController(RoomService,$rootScope) {
+    function RoomListController(RoomService,$rootScope,openedRoomsFactory,$state) {
       var roomListCtrl = this;
       roomListCtrl.rooms = RoomService.getRooms();
       roomListCtrl.openRoom = function(index,room){
-        $rootScope.$broadcast("room.open",room);
+        openedRoomsFactory.addRoom(room);
+        $state.go("rooms.room",{id: room._id});
       }
     }
 

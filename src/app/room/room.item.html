@@ -4,13 +4,15 @@
       {{roomItemCtrl.users2}}
       <md-list scroll="roomItemCtrl.messages">
         <md-subheader class="md-info">Messages in room {{ roomItemCtrl.room.name }}</md-subheader>
-        <message ng-repeat="message in roomItemCtrl.messages" message="message"  author="roomItemCtrl.allusers[message.authorId]" ng-class="{ 'repeated-author' : $index>0 && message.authorId == roomItemCtrl.messages[$index-1].authorId}"></message>
+        <message ng-repeat="message in roomItemCtrl.messages" message="message"
+                 author="roomItemCtrl.allusers[message.authorId]"
+                 ng-class="{ 'repeated-author' : $index>0 && message.authorId == roomItemCtrl.messages[$index-1].authorId}"></message>
       </md-list>
     </md-content>
     <md-content layout-padding>
       <md-input-container class="md-accent">
         <label>New Message</label>
-        <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="350" />
+        <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="350"/>
       </md-input-container>
     </md-content>
   </md-content>
@@ -27,6 +29,4 @@
       </md-list-item>
     </md-list>
   </md-content>
-
-
 </div>

@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -8,13 +8,7 @@
   /** @ngInject */
   function routeConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('rooms', {
-        url: '/rooms',
-        templateUrl: 'app/main/main.html',
-        controller: 'MainController',
-        controllerAs: 'mainCtrl',
-        data: {authenticated: true}
-      }).state('login', {
+      .state('login', {
         url: '/login',
         templateUrl: 'app/login/login.html',
         controller: 'LoginController',
@@ -24,15 +18,22 @@
         templateUrl: 'app/registration/registration.html',
         controller: 'RegistrationController',
         controllerAs: 'registrationCtrl'
+      })
+      .state('rooms', {
+        url: '/rooms',
+        templateUrl: 'app/room/room.tabs.html',
+        controller: 'RoomsController',
+        controllerAs: 'roomsCtrl',
+        data: {authenticated: true}
       }).state('rooms.room', {
         url: '/:id',
-        templateUrl: 'app/rooms/room.item.html',
+        templateUrl: 'app/room/room.item.html',
         controller: 'RoomItemController',
         controllerAs: 'roomItemCtrl',
         data: {authenticated: true}
       });
 
-    $urlRouterProvider.when('/','rooms');
+    $urlRouterProvider.when('/', 'rooms');
     $urlRouterProvider.otherwise('/');
   }
 

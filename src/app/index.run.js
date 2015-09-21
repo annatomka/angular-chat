@@ -8,6 +8,7 @@
   /** @ngInject */
   function runBlock($log, $http, $templateCache,AccountService,$rootScope,$state,$mdToast) {
 
+    //prefetch icons
     var urls = [
       'img/icons/sets/core-icons.svg',
       'img/icons/ic_info_outline_24px.svg',
@@ -15,8 +16,7 @@
       'img/icons/ic_person_24px.svg',
       'img/logo.png'
     ];
-    // Pre-fetch icons sources by URL and cache in the $templateCache...
-    // subsequent $http calls will look there first.
+
     angular.forEach(urls, function(url) {
       $http.get(url, {cache: $templateCache});
     });
@@ -43,7 +43,7 @@
       );
     };
 
-    $log.debug('runBlock end');
+    $log.debug('run block end');
   }
 
 })();

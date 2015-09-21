@@ -1,13 +1,4 @@
 <main-menu ng-if="$root.loggedIn"></main-menu>
 <left-nav ng-if="$root.loggedIn"></left-nav>
-<md-content flex ng-if="mainCtrl.openedRooms.length > 0">
-  <md-subheader>Opened Rooms right now</md-subheader>
-  <md-tabs md-dynamic-height md-selected="mainCtrl.selectedIndex" md-border-bottom md-autoselect>
-    <md-tab ng-repeat="room in mainCtrl.openedRooms">
-      <md-tab-label>{{room.name}} <a ng-click="mainCtrl.removeRoom($index,room)">
-        <md-icon md-svg-icon="navigation:close"></md-icon>
-      </a>
-      </md-tab-label>
-      <div ui-view flex></div>
-  </md-tabs>
-</md-content>
+<room-list ng-if="$root.loggedIn"></room-list>
+<fab ng-if="$root.loggedIn"></fab>

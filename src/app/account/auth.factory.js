@@ -111,6 +111,8 @@
 
       if (username && password) {
         $http.defaults.headers.common.Authorization = "Basic " + myAuth._base64.encode(username + ":" + password);
+      }else{
+        delete $http.defaults.headers.common['Authorization'];
       }
     };
 

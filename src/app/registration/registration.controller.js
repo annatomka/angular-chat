@@ -6,15 +6,16 @@
     .controller('RegistrationController', RegistrationController);
 
   /** @ngInject */
-  function RegistrationController($rootScope, $scope,UserService,User,AccountService) {
+  function RegistrationController($rootScope, $scope, UserService, User, AccountService, $state) {
     var registrationCtrl = this;
     registrationCtrl.user = new User();
+
     registrationCtrl.register = function () {
-      UserService.create(registrationCtrl.user).then(function(user){
-        //successful registration, login user
-        $rootScope.toast("Registration successful! You are now logged in :)")
+      UserService.create(registrationCtrl.user).then(function (user) {
+        $rootScope.toast("Registration successful! You are now logged in :)");
         AccountService.login(user.username, user.password);
-      },function(error){
+        $state.go("rooms");
+      }, function (error) {
 
       });
     }

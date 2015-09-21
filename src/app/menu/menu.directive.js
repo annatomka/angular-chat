@@ -21,21 +21,14 @@
     /** @ngInject */
     function MenuController($timeout, $mdSidenav, $mdUtil, $log,AccountService) {
       var menuCtrl = this;
+      menuCtrl.user = AccountService.getLoggedInUser();
 
       menuCtrl.toggleLeft = buildToggler('left');
 
-      menuCtrl.user = AccountService.getLoggedInUser();
-      /**
-       * Build handler to open/close a SideNav; when animation finishes
-       * report completion in console
-       */
       function buildToggler(navID) {
         var debounceFn =  $mdUtil.debounce(function(){
           $mdSidenav(navID)
-            .toggle()
-            .then(function () {
-              $log.debug("toggle " + navID + " is done");
-            });
+            .toggle();
         },200);
         return debounceFn;
       }

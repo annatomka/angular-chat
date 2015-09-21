@@ -20,7 +20,7 @@
               <input ng-model="loginDialogCtrl.user.password" type="password" required>
             </md-input-container>
             <div class="md-actions" layout="column" layout-align="center">
-              <md-button ui-sref="registration" class="md-raised md-primary" layout="row" layout-align="center center" ng-click="loginCtrl.login()">
+              <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-disabled="login.$invalid==true" ng-click="loginCtrl.login()">
                 Login
               </md-button>
               <a

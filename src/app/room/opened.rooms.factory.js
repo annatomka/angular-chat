@@ -13,18 +13,21 @@
       //update stored rooms
       updateRooms();
     }
+
+    if(typeof $localStorage.index == "undefined"){
+      $localStorage.index = { value: 0};
+    }
+
     var roomFactoryObj = {
       rooms: $localStorage.rooms,
-      selectedIndex: 0
+      selectedIndex: $localStorage.index.value
     };
 
     roomFactoryObj.addRoom = function(room){
       var result = _.findWhere(roomFactoryObj.rooms, { '_id': room._id });
-      console.info("find room in opened rooms result : ", result)
       if(typeof result === "undefined"){
         room.index = roomFactoryObj.rooms.length;
         roomFactoryObj.rooms.push(room);
-        console.info("room pushed into opened rooms")
       }
     };
 

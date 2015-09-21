@@ -12,7 +12,7 @@
           <form name="registration">
             <basic-info user="registrationCtrl.user"></basic-info>
             <div class="md-actions" layout="column" layout-align="center">
-              <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-click="registrationCtrl.register()">
+              <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-disabled="registration.$invalid" ng-click="registrationCtrl.register()">
                 Registration
               </md-button>
               <a
