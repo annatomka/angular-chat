@@ -7,39 +7,58 @@
 
   /** @ngInject */
   function openedRoomsFactory(RoomService,$localStorage) {
-    if(typeof $localStorage.rooms == "undefined"){
-      $localStorage.rooms = [];
-    }else{
-      //update stored rooms
-      updateRooms();
-    }
+    var self = this;
 
-    if(typeof $localStorage.index == "undefined"){
-      $localStorage.index = { value: 0};
-    }
+    var roomFactoryObj = {};
 
-    var roomFactoryObj = {
-      rooms: $localStorage.rooms,
-      selectedIndex: $localStorage.index.value
+    roomFactoryObj.setSelectedIndex = function(newIndex){
+      $localStorage.index  = newIndex;
     };
 
-    roomFactoryObj.addRoom = function(room){
-      var result = _.findWhere(roomFactoryObj.rooms, { '_id': room._id });
-      if(typeof result === "undefined"){
-        room.index = roomFactoryObj.rooms.length;
-        roomFactoryObj.rooms.push(room);
-      }
+    roomFactoryObj.getSelectedIndex = function(){
+      return $localStorage.index;
     };
 
     roomFactoryObj.getRoomByIndex = function(index){
-      var room = _.findWhere(roomFactoryObj.rooms, { 'index': index });
+      var room = _.findWhere($localStorage.rooms, { 'index': index });
       return room;
     };
-    function updateRooms(){
+
+    roomFactoryObj.getRooms = function(){
+      return $localStorage.rooms;
+    };
+
+    roomFactoryObj.addRoom = function(room){
+      if(typeof $localStorage.rooms == "undefined") {
+        $localStorage.rooms = [];
+      }
+
+      room.index = $localStorage.rooms.length;
+      $localStorage.index = room.index;
+      $localStorage.rooms.push(room);
+    };
+
+    roomFactoryObj.removeRoom = function(index){
+      $localStorage.rooms.splice(index, 1);
+    };
+
+    roomFactoryObj.hasRoom = function(){
+      return $localStorage.rooms && $localStorage.rooms.length>0;
+    };
+
+    roomFactoryObj.containsRoom = function(room){
+      var result = _.findWhere($localStorage.rooms, { '_id': room._id });
+      return typeof result != "undefined";
+    };
+
+    function syncRoomsFromLocalStorage(){
       _.forEach($localStorage.rooms,function(storedRoom){
         $localStorage.rooms[storedRoom._id] = RoomService.getRoom(storedRoom._id)
       });
     }
+
+    syncRoomsFromLocalStorage();
+
     return roomFactoryObj;
   }
 

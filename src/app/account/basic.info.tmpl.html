@@ -1,29 +1,37 @@
-<md-content layout-padding>
-  <div layout layout-sm="column">
 
-  <md-input-container flex>
-    <label>First name</label>
-    <input ng-model="user.firstName" required name="firstName">
-  </md-input-container>
-  <md-input-container flex>
-    <label>Last Name</label>
-    <input ng-model="user.lastName" required name="lastName">
-  </md-input-container>
+<md-content layout-padding layout="column">
+  <div layout layout="column">
+    <button ng-if="user.imageUrl!='' && user.imageUrl" class="md-icon-button md-button ng-scope md-default-theme" flex="10" ng-click="user.imageUrl='http://robohash.org/'+user.username;" >
+      <img ng-src="{{user.imageUrl}}" class="md-avatar message-avatar ng-scope" style="height: 50px; background-color: white;">
+      <md-tooltip md-direction="bottom">Generate avatar from my username</md-tooltip>
+    </button>
+    <md-button ng-if="user.username && (user.imageUrl=='' || !user.imageUrl) && user.username!=''" class="md-raised" flex ng-click="user.imageUrl='http://robohash.org/'+user.username;">Generate Avatar</md-button>
+    <div class="md-ripple-container"></div>
+    <md-input-container flex>
+      <label>Image url</label>
+      <input ng-model="user.imageUrl" name="imageUrl">
+    </md-input-container>
+  </div>
+</md-content>
+<md-content layout-padding>
+  <div layout layout="column">
+    <md-input-container flex>
+      <label>First name</label>
+      <input ng-model="user.firstName" required name="firstName">
+    </md-input-container>
+    <md-input-container flex>
+      <label>Last Name</label>
+      <input ng-model="user.lastName" required name="lastName">
+    </md-input-container>
+
+  </div>
+</md-content>
+<md-content layout-padding layout="row" layout-sm="column">
   <md-input-container flex>
     <label>Username</label>
     <input ng-model="user.username" required name="username">
   </md-input-container>
-</div>
-</md-content>
-<md-content layout-padding layout="column">
-  <md-input-container>
-    <label>Image url</label>
-    <input ng-model="user.imageUrl" name="imageUrl">
-  </md-input-container>
-</md-content>
-<md-content layout-padding layout="row" layout-sm="column">
-
-  <md-input-container>
+  <md-input-container flex>
     <label>Password</label>
     <input ng-model="user.password" type="password" required name="password">
   </md-input-container>

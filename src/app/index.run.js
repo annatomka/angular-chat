@@ -22,6 +22,7 @@
     });
 
     $rootScope.loggedIn = AccountService.isLoggedIn();
+    AccountService.initAuthorizationHeader();
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
       if (next.data && next.data.authenticated) {

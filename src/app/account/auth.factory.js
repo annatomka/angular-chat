@@ -6,7 +6,7 @@
     .factory('authFactory', authFactory);
 
   /** @ngInject */
-  function authFactory($http) {
+  function authFactory($http,$localStorage) {
     var myAuth = {};
 
     myAuth._base64 = {
@@ -110,7 +110,9 @@
     myAuth.login = function (username, password) {
 
       if (username && password) {
-        $http.defaults.headers.common.Authorization = "Basic " + myAuth._base64.encode(username + ":" + password);
+        var header =  "Basic " + myAuth._base64.encode(username + ":" + password);;
+        $http.defaults.headers.common.Authorization = header;
+        $localStorage.authorization = header;
       }else{
         delete $http.defaults.headers.common['Authorization'];
       }
@@ -121,6 +123,11 @@
      */
     myAuth.logout = function () {
       delete $http.defaults.headers.common['Authorization'];
+      delete $localStorage.header;
+    };
+
+    myAuth.restoreHeader = function(){
+      $http.defaults.headers.common.Authorization = $localStorage.authorization;
     };
 
     return myAuth;

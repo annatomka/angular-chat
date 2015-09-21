@@ -17,10 +17,16 @@
     function RoomListController(RoomService,$rootScope,openedRoomsFactory,$state) {
       var roomListCtrl = this;
       roomListCtrl.rooms = RoomService.getRooms();
+
       roomListCtrl.openRoom = function(index,room){
-        openedRoomsFactory.addRoom(room);
-        $state.go("rooms.room",{id: room._id});
-      }
+        if(!openedRoomsFactory.containsRoom(room)){
+          openedRoomsFactory.addRoom(room);
+          $state.go("rooms.room",{id: room._id},{reload: true});
+        }else{
+          $rootScope.toast("You've already opened this room!");
+        }
+
+      };
     }
 
     function link(scope, element, attrs) {

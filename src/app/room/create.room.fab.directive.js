@@ -9,7 +9,7 @@
   function fab() {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/menu/fab.html',
+      templateUrl: 'app/room/create.room.fab.tmpl.html',
       controller: FabController,
       controllerAs: 'fabCtrl',
       bindToController: true
@@ -24,7 +24,7 @@
       fabCtrl.createRoomDialog = function (ev) {
         $mdDialog.show({
           controller: DialogController2,
-          templateUrl: 'app/room/room.create.dialog.tmpl.html',
+          templateUrl: 'app/room/create.room.dialog.tmpl.html',
           parent: angular.element(document.body),
           targetEvent: ev,
           clickOutsideToClose: true,
@@ -33,7 +33,7 @@
         });
       };
 
-      function DialogController2($rootScope,$mdDialog,RoomService,$mdToast,$state) {
+      function DialogController2($rootScope,$mdDialog,RoomService,$mdToast,$state,openedRoomsFactory) {
         var createRoomCtrl = this;
         createRoomCtrl.newRoom = {};
 
@@ -46,12 +46,12 @@
 
         createRoomCtrl.create = function(){
           RoomService.createRoom(createRoomCtrl.newRoom).then(function(result){
-            console.info(result)
-            $rootScope.toast("Room "+result._id+" created successfully!")
-            $state.go("rooms.item",{id: result._id},true)
+            $rootScope.toast("Room "+result._id+" created successfully!");
+            openedRoomsFactory.addRoom(result);
+            $state.go("rooms.room",{id: result._id});
             $mdDialog.hide();
           },function(result){
-            console.error(result)
+            console.error(result);
             $rootScope.toast("We couldn't create your room, sorry :(")
           });
 

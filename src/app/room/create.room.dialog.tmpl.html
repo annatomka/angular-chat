@@ -14,7 +14,7 @@
         <div layout layout-sm="column">
           <md-input-container flex>
             <label>Room name</label>
-            <input ng-model="createRoomCtrl.newRoom.name" required>
+            <input ng-enter="createRoomCtrl.create()" ng-model="createRoomCtrl.newRoom.name" required>
           </md-input-container>
         </div>
       </md-content>

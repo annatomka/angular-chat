@@ -14,6 +14,7 @@
     this.isLoggedIn = isLoggedIn;
     this.login = login;
     this.logout = logout;
+    this.initAuthorizationHeader = initAuthorizationHeader;
 
     function getLoggedInUser(){
         return $localStorage.user;
@@ -28,22 +29,28 @@
       $rootScope.loggedIn = true;
     }
 
-    function login(username,password){
+    function login(username,password) {
       authFactory.login(username, password);
-      return Account.get().$promise.then(function(user){
+      return Account.get().$promise.then(function (user) {
         setLoggedInUser(user);
-      },function(error){
-        alert("error "+error)
+      }, function (error) {
+        alert("error " + error)
       });
 
+    }
+
+    function initAuthorizationHeader(){
+      if(isLoggedIn() && typeof $localStorage.authorization != "undefined"){
+        authFactory.restoreHeader();
+      }
     }
 
     function logout(){
       delete $localStorage.user;
       delete $localStorage.rooms;
+      delete $localStorage.index;
       $rootScope.loggedIn = false;
       authFactory.logout();
-
     }
   }
 

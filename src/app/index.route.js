@@ -21,7 +21,7 @@
       })
       .state('rooms', {
         url: '/rooms',
-        templateUrl: 'app/room/room.tabs.html',
+        templateUrl: 'app/room/room.tabs.tmpl.html',
         controller: 'RoomsController',
         controllerAs: 'roomsCtrl',
         data: {authenticated: true}

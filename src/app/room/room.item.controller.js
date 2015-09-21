@@ -24,7 +24,9 @@
     RoomService.getRoom($state.params.id).$promise.then(function (room) {
       roomItemCtrl.room = room;
       _.forEach(room.users, function (userId) {
-        roomItemCtrl.users.push(allUsersFactory.users[userId]);
+        if (!isUserAlreadyAdded(userId)) {
+          roomItemCtrl.users.push(allUsersFactory.users[userId]);
+        }
       });
     });
 
@@ -32,13 +34,11 @@
 
     socket.emit("subscribe", {room: $state.params.id, user: AccountService.getLoggedInUser()});
     socket.on("user.joined", function (user) {
-
-      $timeout(function () {
-        var userfound = _.findWhere(roomItemCtrl.users, {'_id': user._id});
-        if (typeof userfound == "undefined") {
-          roomItemCtrl.users.unshift(user);
+      $scope.$apply(function () {
+        if (!isUserAlreadyAdded(user._id)) {
+          roomItemCtrl.users.push(user);
         }
-      }, 100);
+      });
     });
 
     socket.on("user.left", function (user) {
@@ -59,5 +59,10 @@
     $scope.$on("$destroy", function () {
       socket.emit("unsubscribe", {room: $state.params.id, user: AccountService.getLoggedInUser()});
     });
+
+    function isUserAlreadyAdded(userId){
+      var userfound = _.findWhere(roomItemCtrl.users, {'_id': userId});
+      return typeof userfound != "undefined";
+    }
   }
 })();

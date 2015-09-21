@@ -9,14 +9,19 @@
   function RoomsController($scope, $timeout, $mdBottomSheet, toastr, RoomService, $log,$rootScope,$state,openedRoomsFactory) {
     var roomsCtrl = this;
 
-    roomsCtrl.openedRoomsFactory = openedRoomsFactory;
+    roomsCtrl.selectedIndex = openedRoomsFactory.getSelectedIndex();
+    roomsCtrl.rooms = openedRoomsFactory.getRooms();
 
     roomsCtrl.removeRoom = function (index) {
-      roomsCtrl.openedRoomsFactory.rooms.splice(index, 1);
+      openedRoomsFactory.removeRoom(index);
     };
 
-    $scope.$watch("roomsCtrl.openedRoomsFactory.selectedIndex",function(newIndex){
-      $state.go("rooms.room",{id: openedRoomsFactory.getRoomByIndex(newIndex)._id});
+    $scope.$watch("roomsCtrl.selectedIndex",function(newIndex){
+      openedRoomsFactory.setSelectedIndex(newIndex);
+      if(openedRoomsFactory.hasRoom()){
+        $state.go("rooms.room",{id: openedRoomsFactory.getRoomByIndex(newIndex)._id});
+      }
     });
+
   }
 })();

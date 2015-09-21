@@ -1,7 +1,7 @@
-<md-content flex ng-if="roomsCtrl.openedRoomsFactory.rooms.length > 0">
+<md-content flex ng-if="roomsCtrl.rooms.length > 0">
   <md-subheader>Opened Rooms right now</md-subheader>
-  <md-tabs md-dynamic-height md-selected="roomsCtrl.openedRoomsFactory.selectedIndex" md-border-bottom md-autoselect>
-    <md-tab ng-repeat="room in roomsCtrl.openedRoomsFactory.rooms">
+  <md-tabs md-dynamic-height md-selected="roomsCtrl.selectedIndex" md-border-bottom md-autoselect>
+    <md-tab ng-repeat="room in roomsCtrl.rooms">
       <md-tab-label>{{room.name}} <a ng-click="roomsCtrl.removeRoom($index,room)">
         <md-icon md-svg-icon="navigation:close"></md-icon>
       </a>
