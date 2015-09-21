@@ -9,7 +9,6 @@
   function RoomService($resource, apiUrl,Room, RoomUser) {
     //var Room =  $resource(apiUrl + '/rooms/:id');
     this.getRooms = getRooms;
-    this.getRoom = getRoom;
     this.createRoom = createRoom;
     this.getUsers = getUsers;
 
@@ -20,11 +19,6 @@
         console.log(data)
       });
       return rooms;
-    }
-
-    function getRoom(roomId) {
-      var room = Room.get({id: roomId});
-      return room;
     }
 
     function createRoom(room){

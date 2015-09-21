@@ -33,7 +33,7 @@
         });
       };
 
-      function DialogController2($rootScope,$mdDialog,RoomService,$mdToast,$state,openedRoomsFactory) {
+      function DialogController2($rootScope,$mdDialog,RoomService,$mdToast,$state) {
         var createRoomCtrl = this;
         createRoomCtrl.newRoom = {};
 
@@ -47,8 +47,7 @@
         createRoomCtrl.create = function(){
           RoomService.createRoom(createRoomCtrl.newRoom).then(function(result){
             $rootScope.toast("Room "+result._id+" created successfully!");
-            openedRoomsFactory.addRoom(result);
-            $state.go("rooms.room",{id: result._id});
+
             $mdDialog.hide();
           },function(result){
             console.error(result);

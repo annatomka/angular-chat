@@ -6,7 +6,7 @@
     .service('AccountService', AccountService);
 
   /** @ngInject */
-  function AccountService($resource, apiUrl, $localStorage, $rootScope, $http, openedRoomsFactory, socketFactory) {
+  function AccountService($resource, apiUrl, $localStorage, $rootScope, $http) {
     var Account = $resource(apiUrl + '/account/me');
 
     this.setLoggedInUser = setLoggedInUser;
@@ -49,18 +49,9 @@
     }
 
     function logout() {
-
-      var openedRooms = openedRoomsFactory.getRooms();
-      //logout from rooms
-      _.forEach(openedRooms, function (room) {
-        socketFactory.emit("unsubscribe", {room: room._id, user: getLoggedInUser()});
-      });
-
       delete $http.defaults.headers.common['Authorization'];
       delete $localStorage.header;
       delete $localStorage.user;
-      delete $localStorage.rooms;
-      delete $localStorage.index;
       $rootScope.loggedIn = false;
     }
   }

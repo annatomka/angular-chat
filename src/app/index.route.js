@@ -18,22 +18,13 @@
         templateUrl: 'app/registration/registration.html',
         controller: 'RegistrationController',
         controllerAs: 'registrationCtrl'
-      })
-      .state('rooms', {
+      }).state('rooms', {
         url: '/rooms',
-        templateUrl: 'app/room/room.tabs.tmpl.html',
-        controller: 'RoomsController',
-        controllerAs: 'roomsCtrl',
-        data: {authenticated: true}
-      }).state('rooms.room', {
-        url: '/:id',
-        templateUrl: 'app/room/room.item.html',
-        controller: 'RoomItemController',
-        controllerAs: 'roomItemCtrl',
         data: {authenticated: true}
       });
 
     $urlRouterProvider.when('/', 'rooms');
+
     $urlRouterProvider.otherwise('/');
   }
 
