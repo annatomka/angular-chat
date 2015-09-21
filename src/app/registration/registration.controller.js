@@ -13,8 +13,9 @@
     registrationCtrl.register = function () {
       UserService.create(registrationCtrl.user).then(function (user) {
         $rootScope.toast("Registration successful! You are now logged in :)");
-        AccountService.login(user.username, user.password);
-        $state.go("rooms");
+        AccountService.login(user.username, user.password).then(function(){
+          $state.go("rooms",{},{reload: true});
+        });
       }, function (error) {
 
       });

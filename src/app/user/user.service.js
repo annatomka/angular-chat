@@ -6,7 +6,7 @@
     .service('UserService', UserService);
 
   /** @ngInject */
-  function UserService($resource,apiUrl,$localStorage,authFactory,$window,$rootScope, User) {
+  function UserService($resource, User) {
     this.update = update;
     this.create = create;
     this.getAll = getAll;

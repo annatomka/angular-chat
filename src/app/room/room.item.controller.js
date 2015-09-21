@@ -6,10 +6,8 @@
     .controller("RoomItemController", RoomItemController);
 
   /** @ngInject */
-  function RoomItemController($scope, $timeout, $mdBottomSheet, toastr, MessageService, RoomService, $log, $rootScope, $state, openedRoomsFactory, apiUrl, socketUrl, AccountService, Message, allUsersFactory) {
+  function RoomItemController($scope, $timeout, $mdBottomSheet, toastr, MessageService, RoomService, $log, $rootScope, $state, openedRoomsFactory, apiUrl, socketFactory, AccountService, Message, allUsersFactory) {
     var roomItemCtrl = this;
-    var socket = null;
-
     roomItemCtrl.newMessage = "";
 
     roomItemCtrl.messages = MessageService.getRoomMessages($state.params.id);
@@ -22,42 +20,35 @@
     };
 
     RoomService.getRoom($state.params.id).$promise.then(function (room) {
-      roomItemCtrl.room = room;
       _.forEach(room.users, function (userId) {
         if (!isUserAlreadyAdded(userId)) {
           roomItemCtrl.users.push(allUsersFactory.users[userId]);
         }
       });
+
+      roomItemCtrl.room = room;
     });
 
-    socket = io.connect(socketUrl);
+    socketFactory.emit("subscribe", {room: $state.params.id, user: AccountService.getLoggedInUser()});
 
-    socket.emit("subscribe", {room: $state.params.id, user: AccountService.getLoggedInUser()});
-    socket.on("user.joined", function (user) {
-      $scope.$apply(function () {
+    socketFactory.on("user.joined",function (user) {
         if (!isUserAlreadyAdded(user._id)) {
           roomItemCtrl.users.push(user);
         }
-      });
     });
 
-    socket.on("user.left", function (user) {
-      $scope.$apply(function () {
+    socketFactory.on("user.left",function (user) {
         _.remove(roomItemCtrl.users, {
           _id: user._id
         });
-      });
     });
 
-    socket.on('new message', function (message) {
-      $scope.$apply(function () {
-        message.type = "message";
-        roomItemCtrl.messages.push(message);
-      });
+    socketFactory.on("new message",function (message) {
+      roomItemCtrl.messages.push(message);
     });
 
     $scope.$on("$destroy", function () {
-      socket.emit("unsubscribe", {room: $state.params.id, user: AccountService.getLoggedInUser()});
+      socketFactory.emit("unsubscribe", {room: $state.params.id, user: AccountService.getLoggedInUser()});
     });
 
     function isUserAlreadyAdded(userId){

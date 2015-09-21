@@ -6,7 +6,7 @@
     .directive('profileButton', profileButton);
 
   /** @ngInject */
-  function profileButton($mdDialog, authFactory, AccountService,$state) {
+  function profileButton($mdDialog, AccountService,$state) {
     var directive = {
       restrict: 'A',
       controller: ProfileController,
@@ -38,7 +38,7 @@
         });
       };
 
-      function DialogController($mdDialog, authFactory, AccountService,UserService, User, $window) {
+      function DialogController($mdDialog, AccountService,UserService, User, $window) {
         var profileDialogCtrl = this;
         var loggedinUser = AccountService.getLoggedInUser();
         profileDialogCtrl.user = {};
