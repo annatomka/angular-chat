@@ -19,10 +19,8 @@
     return directive;
 
     /** @ngInject */
-    function MenuController($timeout, $mdSidenav, $mdUtil, $log,AccountService) {
+    function MenuController($timeout, $mdSidenav, $mdUtil, $log) {
       var menuCtrl = this;
-      menuCtrl.user = AccountService.getLoggedInUser();
-
       menuCtrl.toggleLeft = buildToggler('left');
 
       function buildToggler(navID) {

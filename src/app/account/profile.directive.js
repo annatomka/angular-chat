@@ -40,24 +40,12 @@
 
       function DialogController($mdDialog, AccountService,UserService, User, $window) {
         var profileDialogCtrl = this;
-        var loggedinUser = AccountService.getLoggedInUser();
-        profileDialogCtrl.user = {};
 
-        angular.copy(loggedinUser,profileDialogCtrl.user);
         profileDialogCtrl.hide = function () {
           $mdDialog.hide();
         };
         profileDialogCtrl.cancel = function () {
           $mdDialog.cancel();
-        };
-
-        profileDialogCtrl.save = function () {
-          UserService.update(profileDialogCtrl.user).$promise.then(function(result){
-            angular.copy(result,loggedinUser);
-          },function(error){
-
-          });
-          $mdDialog.hide();
         };
       }
     }

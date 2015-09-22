@@ -8,15 +8,10 @@
     </h2>
     <span flex></span>
 
-
-
     <md-button login-button ng-if="!$root.loggedIn">
       Login
     </md-button>
     <registration-button  ng-if="!$root.loggedIn"></registration-button>
-    <md-button profile-button class="md-icon-button" aria-label="More"  ng-if="$root.loggedIn">
-      <img ng-src="{{ menuCtrl.user.imageUrl }}" class="md-avatar message-avatar" style="    height: 50px;
-    background-color: white;"/>
-    </md-button>
+
   </div>
 </md-toolbar>

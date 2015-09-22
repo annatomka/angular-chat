@@ -4,16 +4,11 @@
   </md-toolbar>
   <md-content layout-padding class="cover">
     <div layout="column" layout-align="center">
-        <img class="avatar" ng-src="{{ leftnavCtrl.user.imageUrl }}"/>
-        <h3 class="fullname" layout="row" layout-align="center center">{{ leftnavCtrl.user  | fullname }}</h3>
-        <small class="username" layout="row" layout-align="center center">@{{ leftnavCtrl.user.username}}</small>
+
     </div>
   </md-content>
   <md-content>
     <div class="md-actions" layout="column">
-      <md-button profile-button class="md-accent" layout="row">
-        My Profile
-      </md-button>
       <md-button logout-button class="md-accent" layout="row">
         Logout
       </md-button>
