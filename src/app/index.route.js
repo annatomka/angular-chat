@@ -13,11 +13,6 @@
         templateUrl: 'app/login/login.html',
         controller: 'LoginController',
         controllerAs: 'loginCtrl'
-      }).state('registration', {
-        url: '/registration',
-        templateUrl: 'app/registration/registration.html',
-        controller: 'RegistrationController',
-        controllerAs: 'registrationCtrl'
       }).state('rooms', {
         url: '/rooms',
         data: {authenticated: true}
