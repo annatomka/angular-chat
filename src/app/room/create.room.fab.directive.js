@@ -43,18 +43,6 @@
         createRoomCtrl.cancel = function() {
           $mdDialog.cancel();
         };
-
-        createRoomCtrl.create = function(){
-          RoomService.createRoom(createRoomCtrl.newRoom).then(function(result){
-            $rootScope.toast("Room "+result._id+" created successfully!");
-
-            $mdDialog.hide();
-          },function(result){
-            console.error(result);
-            $rootScope.toast("We couldn't create your room, sorry :(")
-          });
-
-        }
       }
     }
   }
