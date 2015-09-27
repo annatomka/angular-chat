@@ -1,5 +1,6 @@
 # angular-chat
-Angular chat example
+AngularJS chat example using Socket.io, Angular Material
+
 ## Demo
 [Try chat here] (https://angularchatexample.firebaseapp.com)
 
