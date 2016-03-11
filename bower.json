@@ -27,7 +27,8 @@
   },
   "resolutions": {
     "jquery": "~2.1.4",
-    "angular": "~1.4.0"
+    "angular": "~1.4.0",
+    "angular-animate": "1.4.3"
   },
   "overrides": {
     "socket.io-client": {
