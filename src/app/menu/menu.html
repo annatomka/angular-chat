@@ -16,8 +16,9 @@
       Login
     </md-button>
     <registration-button  ng-if="!$root.loggedIn"></registration-button>
-    <md-button profile-button class="md-icon-button" aria-label="More"  ng-if="$root.loggedIn">
-      <img ng-src="{{ menuCtrl.user.imageUrl }}" class="md-avatar message-avatar" style="    height: 50px;
+    <md-button profile-button  aria-label="More"  ng-if="$root.loggedIn">
+      <img ng-src="{{ menuCtrl.user.imageUrl }}" style="     border-radius: 50%;
+    margin-top: 10px;   height: 50px;
     background-color: white;"/>
     </md-button>
   </div>

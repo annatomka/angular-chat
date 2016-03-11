@@ -9,7 +9,7 @@
                  ng-class="{ 'repeated-author' : $index>0 && message.authorId == roomItemCtrl.messages[$index-1].authorId}"></message>
       </md-list>
     </md-content>
-    <md-content layout-padding>
+    <md-content layout-padding layout="column">
       <md-input-container class="md-accent">
         <label>New Message</label>
         <input ng-enter="roomItemCtrl.createMessage()" ng-model="roomItemCtrl.newMessage" md-maxlength="350"/>
