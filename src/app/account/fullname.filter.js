@@ -7,7 +7,7 @@
   /** @ngInject */
   function fullname() {
     return function (user) {
-      return user.firstName + " " + user.lastName;
+      return (user)?user.firstName + " " + user.lastName:"";
     };
   }
 })();

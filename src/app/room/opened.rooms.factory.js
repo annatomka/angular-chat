@@ -34,13 +34,16 @@
       }
 
       room.index = $localStorage.rooms.length;
-      $localStorage.index = room.index;
       $localStorage.rooms.push(room);
+      $localStorage.index = room.index;
       $rootScope.$emit("room.added");
     };
 
     roomFactoryObj.removeRoom = function(index){
       $localStorage.rooms.splice(index, 1);
+      _.forEach($localStorage.rooms, function(room, i) {
+        room.index = i;
+      });
     };
 
     roomFactoryObj.hasRoom = function(){
