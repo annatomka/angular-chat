@@ -11,14 +11,14 @@
         <md-content class="md-padding md-cyan-theme">
           <form name="registration">
             <basic-info user="registrationCtrl.user"></basic-info>
-            <div class="md-actions" layout="column" layout-align="center">
+            <md-dialog-actions layout="column" layout-align="center">
               <md-button class="md-raised md-primary" layout="row" layout-align="center center" ng-disabled="registration.$invalid" ng-click="registrationCtrl.register()">
                 Registration
               </md-button>
               <a
                 class="md-primary md-button md-cyan-theme" ui-sref="login"
                 aria-label="Already registered? Login now">Already registered? Login now</a>
-            </div>
+            </md-dialog-actions>
 
           </form>
         </md-content>

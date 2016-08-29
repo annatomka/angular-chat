@@ -10,7 +10,6 @@
     var roomItemCtrl = this;
     roomItemCtrl.newMessage = "";
     var roomId = $state.params.id;
-
     roomItemCtrl.messages = MessageService.getRoomMessages(roomId);
     roomItemCtrl.users = [];
     roomItemCtrl.allusers = allUsersFactory.users;
