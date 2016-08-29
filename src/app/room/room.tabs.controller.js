@@ -13,13 +13,7 @@
 
     roomsCtrl.removeRoom = function (index) {
       openedRoomsFactory.removeRoom(index);
-      if(roomsCtrl.selectedIndex === index) {
-        if (roomsCtrl.rooms.length === index && index > 0) {
-          index--;
-        }
-
-        goToRoom(index);
-      }
+      goToRoom(index-1);
     };
 
     $scope.$watch("roomsCtrl.selectedIndex",function(newIndex){
@@ -27,7 +21,12 @@
       goToRoom(newIndex);
     });
 
-    $rootScope.$on("room.added",syncFromOpenedRoomsFactory);
+    $rootScope.$on("room.added", onRoomAdded);
+
+    function onRoomAdded() {
+      syncFromOpenedRoomsFactory();
+      goToRoom(roomsCtrl.selectedIndex);
+    }
 
     function syncFromOpenedRoomsFactory(){
       roomsCtrl.selectedIndex = openedRoomsFactory.getSelectedIndex();

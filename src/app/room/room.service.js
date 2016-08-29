@@ -16,8 +16,7 @@
     function getRooms() {
 
       var rooms = Room.query(function (data) {
-        console.log(rooms);
-        console.log(data)
+  
       });
       return rooms;
     }

@@ -10,12 +10,14 @@
     var usersFactoryObj = {
       users: []
     };
-
-    UserService.getAll().$promise.then(function(allUsers){
-      _.forEach(allUsers,function(user){
-        usersFactoryObj.users[user._id] = user;
+    
+    usersFactoryObj.initUsers = function () {
+      return UserService.getAll().$promise.then(function(allUsers){
+        _.forEach(allUsers,function(user){
+          usersFactoryObj.users[user._id] = user;
+        });
       });
-    });
+    };
 
     return usersFactoryObj;
   }

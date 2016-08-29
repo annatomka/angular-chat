@@ -1,5 +1,7 @@
-<md-list-item class="contact-item md-2-line selected">
-  <img ng-src="{{ messageCtrl.author.imageUrl }}" class="md-avatar message-avatar"/>
+<md-list-item class="contact-item md-2-line selected" ng-if="messageCtrl.author">
+
+  <avatar user="messageCtrl.author"  class="md-avatar message-avatar"></avatar>
+
   <div class="md-list-item-text compact">
     <p style="text-align: right;"><small><strong>{{messageCtrl.author.username | username }}</strong>, {{ messageCtrl.message | createdDate }}</small></p>
     <div class="message-content">{{messageCtrl.message.text}}</div>

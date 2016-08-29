@@ -19,8 +19,8 @@
   <md-content class="side-nav room-users" hide-sm layout="column" flex="18">
     <md-list layout-fill>
       <md-subheader class="md-accent">Available users</md-subheader>
-      <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in roomItemCtrl.users">
-        <img ng-src='{{ contact.imageUrl }}' class="md-avatar" alt="{{contact.name}}"/>
+      <md-list-item class="md-2-line contact-item selected" ng-repeat="(index, contact) in roomItemCtrl.users" ng-show="contact.username">
+        <avatar user="contact"></avatar>
         <div class="md-list-item-text compact">
           <h3>{{contact | fullname }}</h3>
           <p>@{{contact.username}}</p>

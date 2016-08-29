@@ -1,8 +1,12 @@
 <md-bottom-sheet class="md-list md-has-header">
-  <md-subheader>Available Rooms <small>Click the room you want to open</small></md-subheader>
-  <md-chips ng-model="roomListCtrl.rooms" readonly="true">
-    <md-chip-template>
-      <strong ng-click="roomListCtrl.openRoom($index,$chip)" >{{$chip.name}}</strong>
-    </md-chip-template>
-  </md-chips>
+  <md-subheader>Available Rooms
+    <small>Click the room you want to open</small>
+  </md-subheader>
+  <md-content style="max-height: 200px;">
+    <md-chips ng-model="roomListCtrl.rooms" readonly="true">
+      <md-chip-template>
+        <strong ng-click="roomListCtrl.openRoom($index,$chip)">{{$chip.name}}</strong>
+      </md-chip-template>
+    </md-chips>
+  </md-content>
 </md-bottom-sheet>
