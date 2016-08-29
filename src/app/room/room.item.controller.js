@@ -9,7 +9,6 @@
   function RoomItemController($scope, users, room, messages, MessageService, RoomService, $log, $rootScope, $state, openedRoomsFactory, apiUrl, socketFactory, AccountService, Message, allUsersFactory) {
     var roomItemCtrl = this;
 
-    debugger;
     roomItemCtrl.newMessage = "";
     var roomId = $state.params.id;
     roomItemCtrl.messages = messages;
