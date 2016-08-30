@@ -24,12 +24,7 @@
         templateUrl: 'app/room/room.tabs.tmpl.html',
         controller: 'RoomsController',
         controllerAs: 'roomsCtrl',
-        data: {authenticated: true},
-        resolve: {
-          users : function (allUsersFactory) {
-            return allUsersFactory.initUsers().$promise;
-          }
-        }
+        data: {authenticated: true}
       }).state('rooms.room', {
         url: '/:id',
         templateUrl: 'app/room/room.item.html',
@@ -37,6 +32,9 @@
         controllerAs: 'roomItemCtrl',
         data: {authenticated: true},
         resolve: {
+          users : function (allUsersFactory) {
+            return allUsersFactory.initUsers();
+          },
           room: function (RoomService, $stateParams) {
             var roomId = $stateParams.id;
             return RoomService.getRoom(roomId).$promise;

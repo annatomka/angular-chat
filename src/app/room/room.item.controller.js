@@ -8,7 +8,6 @@
   /** @ngInject */
   function RoomItemController($scope, users, room, messages, MessageService, RoomService, $log, $rootScope, $state, openedRoomsFactory, apiUrl, socketFactory, AccountService, Message, allUsersFactory) {
     var roomItemCtrl = this;
-
     roomItemCtrl.newMessage = "";
     var roomId = $state.params.id;
     roomItemCtrl.messages = messages;
@@ -20,8 +19,6 @@
       roomItemCtrl.newMessage = "";
     };
 
-
-    console.log("users in room: ", room.users)
     _.forEach(room.users, function (userId) {
       if (!isUserAlreadyAdded(userId)) {
         roomItemCtrl.users.push(allUsersFactory.users[userId]);
