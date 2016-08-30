@@ -2,6 +2,6 @@
   'use strict';
 
   angular
-    .module('angularChat', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ngMaterial','ngStorage']);
+    .module('angularChat', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.router', 'ngMaterial','ngStorage', 'ngEmbed']);
 
 })();

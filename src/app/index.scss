@@ -17,7 +17,7 @@ body{
   background-size: cover;
 }
 
-.avatar{
+.avatar img{
   height: 128px;
   border-radius: 50%;
   box-sizing: content-box;
@@ -79,7 +79,7 @@ message:not(.repeated-author) md-list-item{
   margin-top: 20px;
 }
 .repeated-author{
-  img.message-avatar {
+  img.md-avatar {
     opacity: 0;
     height: 0;
   }
