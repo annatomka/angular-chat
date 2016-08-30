@@ -36,6 +36,8 @@
     function goToRoom(newIndex) {
       if(openedRoomsFactory.hasRoom()){
         $state.go("rooms.room",{id: openedRoomsFactory.getRoomByIndex(newIndex)._id});
+      }else{
+        $state.go("rooms");
       }
     }
   }

@@ -21,6 +21,7 @@
     };
 
 
+    console.log("users in room: ", room.users)
     _.forEach(room.users, function (userId) {
       if (!isUserAlreadyAdded(userId)) {
         roomItemCtrl.users.push(allUsersFactory.users[userId]);

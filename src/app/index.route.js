@@ -27,7 +27,7 @@
         data: {authenticated: true},
         resolve: {
           users : function (allUsersFactory) {
-            return allUsersFactory.initUsers();
+            return allUsersFactory.initUsers().$promise;
           }
         }
       }).state('rooms.room', {
@@ -39,11 +39,11 @@
         resolve: {
           room: function (RoomService, $stateParams) {
             var roomId = $stateParams.id;
-            return RoomService.getRoom(roomId);
+            return RoomService.getRoom(roomId).$promise;
           },
           messages: function (MessageService, $state, $stateParams) {
             var roomId = $stateParams.id;
-            return MessageService.getRoomMessages(roomId);
+            return MessageService.getRoomMessages(roomId).$promise;
           }
         }
       });
