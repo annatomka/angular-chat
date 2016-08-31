@@ -16,7 +16,7 @@
       },
       'gdevAuth': 'AIzaSyC8BFwdPMZ3qcUvBswnggzeqnsUbQpAaok',
       'video'     : {
-        'embed'    : true,
+        'embed'    : false,
         'width'    : 800,
         'ytTheme'  : 'light',
         'details'  : true
