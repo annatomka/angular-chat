@@ -655,7 +655,6 @@ Declare the *openedRoomsFactory* dependency in room.list.directive.js file, and 
   roomListCtrl.openRoom = function(index,room){
 if(!openedRoomsFactory.containsRoom(room)){
   openedRoomsFactory.addRoom(room);
-  $state.go("rooms.room",{id: room._id},{reload: false});
 }else{
   $rootScope.toast("You've already opened this room!");
 }
@@ -746,6 +745,7 @@ Next create the view for the tab layout (room.tabs.tmpl.html) with the following
      <md-tab-body>
             <div ng-if="roomsCtrl.selectedIndex === $index" ui-view flex></div>
           </md-tab-body>
+          </md-tab>
 </md-tabs>
 </md-content>
 ```
