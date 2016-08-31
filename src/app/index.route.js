@@ -16,7 +16,12 @@
       }).state('rooms', {
         url: '/rooms',
         data: {authenticated: true}
-      });
+      }).state('registration', {
+      url: '/registration',
+      templateUrl: 'app/registration/registration.html',
+      controller: 'RegistrationController',
+      controllerAs: 'registrationCtrl'
+    });
 
     $urlRouterProvider.when('/', 'rooms');
 
