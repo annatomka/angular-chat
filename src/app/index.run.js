@@ -7,6 +7,25 @@
 
   /** @ngInject */
   function runBlock($log, $http, $templateCache,AccountService,$rootScope,$state,$mdToast) {
+    $rootScope.embedOptions = {
+      'linkTarget': '_blank',
+      'basicVideo': false,
+      'code'      : {
+        'highlight'  : true,
+        'lineNumbers': true
+      },
+      'gdevAuth': 'AIzaSyC8BFwdPMZ3qcUvBswnggzeqnsUbQpAaok',
+      'video'     : {
+        'embed'    : false,
+        'width'    : 800,
+        'ytTheme'  : 'light',
+        'details'  : true
+      },
+      'image'     : {
+        'embed': true
+      },
+      tweetEmbed: false
+    };
 
     //prefetch icons
     var urls = [
