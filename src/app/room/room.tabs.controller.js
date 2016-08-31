@@ -13,7 +13,7 @@
 
     roomsCtrl.removeRoom = function (index) {
       openedRoomsFactory.removeRoom(index);
-      goToRoom(index-1);
+      goToRoom(openedRoomsFactory.getRooms().length-1);
     };
 
     $scope.$watch("roomsCtrl.selectedIndex",function(newIndex){

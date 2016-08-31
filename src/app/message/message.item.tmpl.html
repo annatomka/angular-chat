@@ -1,13 +1,16 @@
 <md-list-item class="contact-item md-2-line selected" ng-if="messageCtrl.author">
 
-  <avatar user="messageCtrl.author"  class="md-avatar message-avatar"></avatar>
+  <avatar user="messageCtrl.author" class="md-avatar message-avatar"></avatar>
 
   <div class="md-list-item-text compact">
-    <p style="text-align: right;"><small><strong>{{messageCtrl.author.username | username }}</strong>, {{ messageCtrl.message | createdDate }}</small></p>
-    <div class="message-content" ng-bind-html="messageCtrl.message.text | embed "></div>
-    <ng-embed
-      embed-data="messageCtrl.message.text" embed-options="$root.embedOptions"
-    ></ng-embed>
-  </div>
+    <p style="text-align: right;">
+      <small><strong>{{messageCtrl.author.username | username }}</strong>, {{ messageCtrl.message | createdDate }}
+      </small>
+    </p>
+    <div class="message-content">
+      <ng-embed
+        embed-data="messageCtrl.message.text" embed-options="$root.embedOptions"
+      ></ng-embed>
+    </div>
 </md-list-item>
 

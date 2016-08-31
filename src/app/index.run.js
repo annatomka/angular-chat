@@ -24,9 +24,7 @@
       'image'     : {
         'embed': true
       },
-      tweetOptions: {
-        align: 'center'
-      }
+      tweetEmbed: false
     };
 
     //prefetch icons

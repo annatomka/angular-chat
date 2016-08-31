@@ -1,6 +1,6 @@
 {
   "firebase": "angularchatexample",
-  "public": ".",
+  "public": "dist",
   "ignore": [
     "firebase.json",
     "**/.*",
