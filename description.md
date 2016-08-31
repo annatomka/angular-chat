@@ -868,14 +868,14 @@ roomItemCtrl.messages.push(message);
 
 Open room/room.item.html template! Here create an Angular Material list, that will display the roomItemCtrl.messages variable:
 
-``` javascript
+``` html
  <md-list scroll="roomItemCtrl.messages">
         <md-subheader class="md-info">Messages in room {{ roomItemCtrl.room.name }}</md-subheader>
         <message ng-repeat="message in roomItemCtrl.messages track by message._id" message="message"
                  author="roomItemCtrl.allusers[message.authorId]"
                  ng-class="{ 'repeated-author' : $index>0 && message.authorId == roomItemCtrl.messages[$index-1].authorId}"></message>
       </md-list>
-``` html
+```
 
 
 Create new message:
